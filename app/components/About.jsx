@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import NavBar from './shared/NavBar';
 import Rachel from '../images/rachel.jpg';
+import Studio from '../images/studio.jpg';
 
 const About = () => (
   <Fragment>
@@ -41,6 +42,9 @@ const About = () => (
             urna.
           </p>
         </div>
+      </div>
+      <div className="flex flex-row justify-center p-5 mt-2">
+        <img src={Studio} alt="Studio" className="shadow-2xl" />
       </div>
     </div>
   </Fragment>
