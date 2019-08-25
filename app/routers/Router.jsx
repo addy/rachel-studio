@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Index from '../components/Index';
 import About from '../components/About';
@@ -7,7 +7,7 @@ import Contact from '../components/Contact';
 
 const Router = () => (
   <Fragment>
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Switch>
           <Route exact path="/" component={Index} />
@@ -15,7 +15,7 @@ const Router = () => (
           <Route exact path="/contact" component={Contact} />
         </Switch>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   </Fragment>
 );
 
