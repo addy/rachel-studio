@@ -15,8 +15,23 @@ class Contact extends Component {
 
   onSave = e => {
     e.preventDefault();
-    const { firstName, lastName, email, title, message } = this.state;
-    if (!firstName || !lastName || !email || !title || !message) return;
+    const { firstName, lastName, email, message } = this.state;
+    if (!firstName || !lastName || !email || !message) return;
+
+    fetch('/api/contact', {
+      method: 'POST',
+      mode: 'same-origin',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        message
+      })
+    }).then(response => console.log(response));
   };
 
   onFirstNameChange = e => {
@@ -36,8 +51,9 @@ class Contact extends Component {
   };
 
   onEmailChange = e => {
-    if (e.target.value !== '') {
-      this.setState({ email: e.target.value });
+    const { value } = e.target;
+    if (value !== '' && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+      this.setState({ email: value });
     } else {
       this.setState({ email: undefined });
     }
@@ -53,6 +69,7 @@ class Contact extends Component {
 
   render() {
     const { onSave, onFirstNameChange, onLastNameChange, onEmailChange, onMessageChange } = this;
+    const { firstName, lastName, email, message } = this.state;
 
     return (
       <Fragment>
@@ -66,7 +83,7 @@ class Contact extends Component {
                   htmlFor="grid-first-name"
                   id="first-name"
                 >
-                  First Name
+                  First Name*
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name"
@@ -82,7 +99,7 @@ class Contact extends Component {
                   htmlFor="grid-last-name"
                   id="last-name"
                 >
-                  Last Name
+                  Last Name*
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name"
@@ -100,7 +117,7 @@ class Contact extends Component {
                   htmlFor="grid-email"
                   id="email"
                 >
-                  Email Address
+                  Email Address*
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-email"
@@ -118,7 +135,7 @@ class Contact extends Component {
                   htmlFor="grid-message"
                   id="message"
                 >
-                  Message
+                  Message*
                   <textarea
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-message"
@@ -129,13 +146,22 @@ class Contact extends Component {
                 </label>
               </div>
             </div>
-            <button
-              type="button"
-              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-              onClick={onSave}
-            >
-              Submit
-            </button>
+            {firstName && lastName && email && message ? (
+              <button
+                type="button"
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                onClick={onSave}
+              >
+                Submit
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed"
+              >
+                Submit
+              </button>
+            )}
           </form>
         </div>
       </Fragment>

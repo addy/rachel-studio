@@ -41,6 +41,7 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "tailwind:css": "tailwind build app/stylesheets/tailwind.src.css -c tailwind.config.js -o app/stylesheets/tailwind.css",
     "build": "webpack --config webpack.prod.js",
