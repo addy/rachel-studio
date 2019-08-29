@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tag from './Tag';
 
 const CardDetails = ({ src, alt, title, text, tags }) => (
-  <div className="w-1/3 text-center px-4 py-2 m-2">
+  <div className="w-1/3 text-center px-4 py-2 m-2s mx-auto">
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <img className="w-full" src={src} alt={alt} />
       <div className="px-6 py-4">

@@ -5,6 +5,7 @@ import CardDetails from './shared/CardDetails';
 import Suze from '../images/suze.jpg';
 import Sister from '../images/sister.jpg';
 import Seahorse from '../images/seahorse.jpg';
+import Plant from '../images/plant.jpg';
 
 const Portfolio = () => (
   <Fragment>
@@ -26,11 +27,11 @@ const Portfolio = () => (
           tags={['friend', 'cool']}
         />
         <CardDetails
-          src={Seahorse}
-          alt="Seahorse"
-          title="Seahorse"
-          text="My seahorse"
-          tags={['sea', 'horse']}
+          src={Plant}
+          alt="Plant"
+          title="Plant"
+          text="My plant"
+          tags={['pot', 'plant']}
         />
       </div>
       <div className="container flex items-center flex-row">
@@ -40,43 +41,6 @@ const Portfolio = () => (
           title="Seahorse"
           text="My seahorse"
           tags={['sea', 'horse']}
-        />
-        <CardDetails
-          src={Sister}
-          alt="Sister"
-          title="Lexie"
-          text="My sister"
-          tags={['sister', 'cool']}
-        />
-        <CardDetails
-          src={Suze}
-          alt="Susan"
-          title="Susan"
-          text="My friend"
-          tags={['friend', 'cool']}
-        />
-      </div>
-      <div className="container flex items-center flex-row">
-        <CardDetails
-          src={Suze}
-          alt="Susan"
-          title="Susan"
-          text="My friend"
-          tags={['friend', 'cool']}
-        />
-        <CardDetails
-          src={Seahorse}
-          alt="Seahorse"
-          title="Seahorse"
-          text="My seahorse"
-          tags={['sea', 'horse']}
-        />
-        <CardDetails
-          src={Sister}
-          alt="Sister"
-          title="Lexie"
-          text="My sister"
-          tags={['sister', 'cool']}
         />
       </div>
     </div>
