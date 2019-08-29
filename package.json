@@ -45,6 +45,7 @@
   "scripts": {
     "tailwind:css": "tailwind build app/stylesheets/tailwind.src.css -c tailwind.config.js -o app/stylesheets/tailwind.css",
     "build": "webpack --config webpack.prod.js",
-    "start": "yarn tailwind:css && webpack-dev-server --config webpack.dev.js"
+    "start": "yarn tailwind:css && webpack-dev-server --config webpack.dev.js",
+    "deploy": "git pull origin master && yarn build && rm -rf /var/www/rachelshawstudio.com/ && mkdir /var/www/rachelshawstudio.com/ && cp -r ~/projects/rachel-studio/dist/* /var/www/rachelshawstudio.com/ && service nginx restart"
   }
 }
