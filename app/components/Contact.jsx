@@ -6,18 +6,18 @@ class Contact extends Component {
     super(props);
 
     this.state = {
-      firstName: undefined,
-      lastName: undefined,
-      email: undefined,
-      message: undefined,
+      firstName: '',
+      lastName: '',
+      email: '',
+      message: '',
       formResponseCode: undefined
     };
   }
 
   onSave = e => {
     e.preventDefault();
-    const { firstName, lastName, email, message } = this.state;
-    if (!firstName || !lastName || !email || !message) return;
+    const { firstName, lastName, submissionEmail, message } = this.state;
+    if (!firstName || !lastName || !submissionEmail || !message) return;
 
     fetch('/api/contact', {
       method: 'POST',
@@ -29,18 +29,19 @@ class Contact extends Component {
       body: JSON.stringify({
         firstName,
         lastName,
-        email,
+        submissionEmail,
         message
       })
-    }).then(formResponseCode =>
+    }).then(res => {
       this.setState({
-        formResponseCode,
-        firstName: undefined,
-        lastName: undefined,
-        email: undefined,
-        message: undefined
-      })
-    );
+        formResponseCode: res.status,
+        firstName: '',
+        lastName: '',
+        submissionEmail: '',
+        email: '',
+        message: ''
+      });
+    });
   };
 
   onFirstNameChange = e => {
@@ -62,9 +63,9 @@ class Contact extends Component {
   onEmailChange = e => {
     const { value } = e.target;
     if (value !== '' && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-      this.setState({ email: value });
+      this.setState({ submissionEmail: value, email: value });
     } else {
-      this.setState({ email: undefined });
+      this.setState({ submissionEmail: '', email: value });
     }
   };
 
@@ -88,6 +89,7 @@ class Contact extends Component {
       onAlertClose
     } = this;
     const { firstName, lastName, email, message, formResponseCode } = this.state;
+    const color = formResponseCode !== undefined && formResponseCode === 200 ? 'green' : 'red';
 
     return (
       <Fragment>
@@ -95,11 +97,7 @@ class Contact extends Component {
         <div className="container mx-auto">
           {formResponseCode && (
             <div
-              className={`w-1/2 bg-${
-                formResponseCode === 200 ? 'green' : 'red'
-              }-100 border border-red-400 text-${
-                formResponseCode === 200 ? 'green' : 'red'
-              }-700 px-4 py-3 rounded relative mx-auto mb-5`}
+              className={`w-1/2 bg-${color}-100 border border-${color}-400 text-${color}-700 px-4 py-3 rounded relative mx-auto mb-5`}
               role="alert"
             >
               <strong className="font-bold">
@@ -114,7 +112,7 @@ class Contact extends Component {
                 type="button"
               >
                 <svg
-                  className="fill-current h-6 w-6 text-red-500"
+                  className={`fill-current h-6 w-6 text-${color}-500`}
                   role="button"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -200,10 +198,10 @@ class Contact extends Component {
                 </label>
               </div>
             </div>
-            {firstName && lastName && email && message ? (
+            {Boolean(firstName) && Boolean(lastName) && Boolean(email) && Boolean(message) ? (
               <button
                 type="button"
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
                 onClick={onSave}
               >
                 Submit
