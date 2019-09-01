@@ -29,7 +29,7 @@ class Contact extends Component {
       body: JSON.stringify({
         firstName,
         lastName,
-        submissionEmail,
+        email: submissionEmail,
         message
       })
     }).then(res => {
