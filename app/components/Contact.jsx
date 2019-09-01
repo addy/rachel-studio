@@ -9,7 +9,8 @@ class Contact extends Component {
       firstName: undefined,
       lastName: undefined,
       email: undefined,
-      message: undefined
+      message: undefined,
+      formResponseCode: undefined
     };
   }
 
@@ -31,7 +32,15 @@ class Contact extends Component {
         email,
         message
       })
-    }).then(response => console.log(response));
+    }).then(formResponseCode =>
+      this.setState({
+        formResponseCode,
+        firstName: undefined,
+        lastName: undefined,
+        email: undefined,
+        message: undefined
+      })
+    );
   };
 
   onFirstNameChange = e => {
@@ -67,14 +76,55 @@ class Contact extends Component {
     }
   };
 
+  onAlertClose = () => this.setState({ formResponseCode: undefined });
+
   render() {
-    const { onSave, onFirstNameChange, onLastNameChange, onEmailChange, onMessageChange } = this;
-    const { firstName, lastName, email, message } = this.state;
+    const {
+      onSave,
+      onFirstNameChange,
+      onLastNameChange,
+      onEmailChange,
+      onMessageChange,
+      onAlertClose
+    } = this;
+    const { firstName, lastName, email, message, formResponseCode } = this.state;
 
     return (
       <Fragment>
         <NavBar currentPage={2} />
         <div className="container mx-auto">
+          {formResponseCode && (
+            <div
+              className={`w-1/2 bg-${
+                formResponseCode === 200 ? 'green' : 'red'
+              }-100 border border-red-400 text-${
+                formResponseCode === 200 ? 'green' : 'red'
+              }-700 px-4 py-3 rounded relative mx-auto mb-5`}
+              role="alert"
+            >
+              <strong className="font-bold">
+                {formResponseCode === 200 ? 'Success!' : 'Failure!'}
+              </strong>
+              <span className="block sm:inline">
+                {` ${formResponseCode === 200 ? 'Email sent.' : 'Could not send the email.'}`}
+              </span>
+              <button
+                className="absolute top-0 bottom-0 right-0 px-4 py-3"
+                onClick={onAlertClose}
+                type="button"
+              >
+                <svg
+                  className="fill-current h-6 w-6 text-red-500"
+                  role="button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <title>Close</title>
+                  <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                </svg>
+              </button>
+            </div>
+          )}
           <form className="w-full max-w-lg mx-auto">
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -89,6 +139,7 @@ class Contact extends Component {
                     id="grid-first-name"
                     type="text"
                     placeholder="Jane"
+                    value={firstName}
                     onChange={onFirstNameChange}
                   />
                 </label>
@@ -105,6 +156,7 @@ class Contact extends Component {
                     id="grid-last-name"
                     type="text"
                     placeholder="Doe"
+                    value={lastName}
                     onChange={onLastNameChange}
                   />
                 </label>
@@ -123,6 +175,7 @@ class Contact extends Component {
                     id="grid-email"
                     type="text"
                     placeholder="jane.doe@email.com"
+                    value={email}
                     onChange={onEmailChange}
                   />
                 </label>
@@ -141,6 +194,7 @@ class Contact extends Component {
                     id="grid-message"
                     type="text"
                     placeholder="..."
+                    value={message}
                     onChange={onMessageChange}
                   />
                 </label>
