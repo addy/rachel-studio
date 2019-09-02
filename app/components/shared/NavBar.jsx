@@ -7,17 +7,23 @@ const NavBar = ({ currentPage, noMargin }) => (
     <div className="flex justify-center lg:justify-end xl:justify-end lg:pr-4 xl:pr-4 mx-auto lg:mx-0 xl:mx-0">
       <div className="w-1/3 lg:w-auto xl:w-auto text-center py-2 m-2">
         <div className={currentPage === 0 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}>
-          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/portfolio" className="text-base">
+            Portfolio
+          </Link>
         </div>
       </div>
       <div className="w-1/3 lg:w-auto xl:w-auto text-center py-2 m-2">
         <div className={currentPage === 1 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}>
-          <Link to="/about">About</Link>
+          <Link to="/about" className="text-base">
+            About
+          </Link>
         </div>
       </div>
       <div className="w-1/3 lg:w-auto xl:w-auto text-center py-2 m-2">
         <div className={currentPage === 2 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact" className="text-base">
+            Contact
+          </Link>
         </div>
       </div>
     </div>
