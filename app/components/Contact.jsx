@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PulseLoader from 'react-spinners/PulseLoader';
 import NavBar from './shared/NavBar';
 
 class Contact extends Component {
@@ -9,8 +10,10 @@ class Contact extends Component {
       firstName: '',
       lastName: '',
       email: '',
+      submissionEmail: '',
       message: '',
-      formResponseCode: undefined
+      formResponseCode: undefined,
+      saving: false
     };
   }
 
@@ -18,6 +21,8 @@ class Contact extends Component {
     e.preventDefault();
     const { firstName, lastName, submissionEmail, message } = this.state;
     if (!firstName || !lastName || !submissionEmail || !message) return;
+
+    this.setState({ saving: true });
 
     fetch('/api/contact', {
       method: 'POST',
@@ -37,9 +42,10 @@ class Contact extends Component {
         formResponseCode: res.status,
         firstName: '',
         lastName: '',
-        submissionEmail: '',
         email: '',
-        message: ''
+        submissionEmail: '',
+        message: '',
+        saving: false
       });
     });
   };
@@ -88,7 +94,15 @@ class Contact extends Component {
       onMessageChange,
       onAlertClose
     } = this;
-    const { firstName, lastName, email, message, formResponseCode } = this.state;
+    const {
+      firstName,
+      lastName,
+      email,
+      submissionEmail,
+      message,
+      formResponseCode,
+      saving
+    } = this.state;
     const color = formResponseCode !== undefined && formResponseCode === 200 ? 'green' : 'red';
 
     return (
@@ -198,21 +212,36 @@ class Contact extends Component {
                 </label>
               </div>
             </div>
-            {Boolean(firstName) && Boolean(lastName) && Boolean(email) && Boolean(message) ? (
+            {saving ? (
               <button
                 type="button"
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
-                onClick={onSave}
+                className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow opacity-50 cursor-not-allowed"
               >
-                Submit
+                <PulseLoader sizeUnit="px" size={10} loading={saving} />
               </button>
             ) : (
-              <button
-                type="button"
-                className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed"
-              >
-                Submit
-              </button>
+              <Fragment>
+                {Boolean(firstName) &&
+                  Boolean(lastName) &&
+                  Boolean(submissionEmail) &&
+                  Boolean(message) && (
+                    <button
+                      type="button"
+                      className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
+                      onClick={onSave}
+                    >
+                      Submit
+                    </button>
+                  )}
+                {(!firstName || !lastName || !submissionEmail || !message) && (
+                  <button
+                    type="button"
+                    className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow opacity-50 cursor-not-allowed"
+                  >
+                    Submit
+                  </button>
+                )}
+              </Fragment>
             )}
           </form>
         </div>
