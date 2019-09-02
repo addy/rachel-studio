@@ -6,10 +6,16 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
-const devMode = process.env.NODE_ENV === 'development';
+const devMode = process.env.NODE_ENV !== 'production';
 const PATHS = {
   src: path.join(__dirname, 'app')
 };
+
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-z0-9-:\/]+/g);
+  }
+}
 
 module.exports = {
   entry: './app/index.js',
@@ -67,7 +73,13 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
     }),
     new PurgecssPlugin({
-      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ['html', 'js', 'jsx']
+        }
+      ]
     })
   ],
   optimization: {
