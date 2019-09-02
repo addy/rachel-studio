@@ -12,22 +12,22 @@ const NavBar = ({ currentPage, noMargin }) => (
           </Link>
         </div>
       </div>
-      <ul className="w-1/2 flex justify-end">
-        <li className="px-4 py-2 m-2">
+      <ul className="w-1/2 flex justify-end pr-4">
+        <li className="py-2 m-2">
           <div
             className={currentPage === 0 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}
           >
             <Link to="/portfolio">Portfolio</Link>
           </div>
         </li>
-        <li className="px-4 py-2 m-2">
+        <li className="py-2 m-2">
           <div
             className={currentPage === 1 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}
           >
             <Link to="/about">About</Link>
           </div>
         </li>
-        <li className="px-4 py-2 m-2">
+        <li className="py-2 m-2">
           <div
             className={currentPage === 2 ? 'text-gray-800' : 'text-gray-500 hover:text-gray-800'}
           >
