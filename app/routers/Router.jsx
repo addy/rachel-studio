@@ -1,41 +1,24 @@
-import React, { Fragment } from 'react';
-import Loadable from 'react-loadable';
+import React, { Fragment, Suspense, lazy } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import Loading from '../components/shared/Loading';
+import Index from '../components/Index';
 
-const Loading = () => <div />;
-
-const LoadableIndex = Loadable({
-  loader: () => import('../components/Index'),
-  loading: Loading
-});
-
-const LoadablePortfolio = Loadable({
-  loader: () => import('../components/Portfolio'),
-  loading: Loading
-});
-
-const LoadableAbout = Loadable({
-  loader: () => import('../components/About'),
-  loading: Loading
-});
-
-const LoadableContact = Loadable({
-  loader: () => import('../components/Contact'),
-  loading: Loading
-});
+const Portfolio = lazy(() => import('../components/Portfolio'));
+const About = lazy(() => import('../components/About'));
+const Contact = lazy(() => import('../components/Contact'));
 
 const Router = () => {
   return (
     <Fragment>
       <HashRouter>
-        <div>
+        <Suspense fallback={Loading}>
           <Switch>
-            <Route exact path="/" component={LoadableIndex} />
-            <Route exact path="/portfolio" component={LoadablePortfolio} />
-            <Route exact path="/about" component={LoadableAbout} />
-            <Route exact path="/contact" component={LoadableContact} />
+            <Route exact path="/" component={Index} />
+            <Route exact path="/portfolio" component={Portfolio} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact} />
           </Switch>
-        </div>
+        </Suspense>
       </HashRouter>
     </Fragment>
   );

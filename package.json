@@ -2,16 +2,14 @@
   "name": "rachel-studio",
   "version": "1.0.0",
   "description": "Rachel's Studio",
-  "main": "index.js",
+  "main": "index.jsx",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-loadable": "^5.5.0",
     "react-router-dom": "^5.0.1",
-    "react-spinners": "^0.6.1",
     "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
@@ -25,6 +23,7 @@
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "compression-webpack-plugin": "^3.0.0",
     "css-loader": "^3.1.0",
     "eslint": "5.3.0",
@@ -50,10 +49,9 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   },
-  "proxy": "http://localhost:5000",
   "scripts": {
-    "build": "webpack --config webpack.prod.js --mode production",
-    "start": "webpack-dev-server --config webpack.dev.js --mode development",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "deploy": "git pull origin master && yarn build && rm -rf /var/www/rachelshawstudio.com/ && mkdir /var/www/rachelshawstudio.com/ && cp -r ~/projects/rachel-studio/dist/* /var/www/rachelshawstudio.com/ && service nginx restart"
   },
   "browserslist": [

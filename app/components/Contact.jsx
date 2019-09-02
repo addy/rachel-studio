@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PulseLoader from 'react-spinners/PulseLoader';
 import NavBar from './shared/NavBar';
 
 class Contact extends Component {
@@ -218,7 +217,7 @@ class Contact extends Component {
                 className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow opacity-50 cursor-not-allowed"
                 title="Submitting..."
               >
-                <PulseLoader sizeUnit="px" size={10} loading={saving} />
+                Submitting...
               </button>
             ) : (
               <Fragment>

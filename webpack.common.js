@@ -18,7 +18,7 @@ class TailwindExtractor {
 }
 
 module.exports = {
-  entry: './app/index.js',
+  entry: './app/index.jsx',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
