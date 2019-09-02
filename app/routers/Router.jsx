@@ -1,24 +1,44 @@
 import React, { Fragment } from 'react';
+import Loadable from 'react-loadable';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
-import Index from '../components/Index';
-import Portfolio from '../components/Portfolio';
-import About from '../components/About';
-import Contact from '../components/Contact';
+const Loading = () => <div />;
 
-const Router = () => (
-  <Fragment>
-    <HashRouter>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Index} />
-          <Route exact path="/portfolio" component={Portfolio} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
-        </Switch>
-      </div>
-    </HashRouter>
-  </Fragment>
-);
+const LoadableIndex = Loadable({
+  loader: () => import('../components/Index'),
+  loading: Loading
+});
+
+const LoadablePortfolio = Loadable({
+  loader: () => import('../components/Portfolio'),
+  loading: Loading
+});
+
+const LoadableAbout = Loadable({
+  loader: () => import('../components/About'),
+  loading: Loading
+});
+
+const LoadableContact = Loadable({
+  loader: () => import('../components/Contact'),
+  loading: Loading
+});
+
+const Router = () => {
+  return (
+    <Fragment>
+      <HashRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" component={LoadableIndex} />
+            <Route exact path="/portfolio" component={LoadablePortfolio} />
+            <Route exact path="/about" component={LoadableAbout} />
+            <Route exact path="/contact" component={LoadableContact} />
+          </Switch>
+        </div>
+      </HashRouter>
+    </Fragment>
+  );
+};
 
 export default Router;
