@@ -40,11 +40,12 @@ const NavBar = ({ currentPage, noMargin }) => (
 );
 
 NavBar.propTypes = {
-  currentPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
   noMargin: PropTypes.bool
 };
 
 NavBar.defaultProps = {
+  currentPage: undefined,
   noMargin: false
 };
 

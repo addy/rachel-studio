@@ -13,7 +13,7 @@ const CardDetails = ({ src, alt, title, text, tags }) => (
       {tags.length > 0 && (
         <div className="px-6 py-4">
           {tags.map(tag => (
-            <Tag text={tag} />
+            <Tag key={`${tag}`} text={tag} />
           ))}
         </div>
       )}
