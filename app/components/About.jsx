@@ -7,15 +7,15 @@ const About = () => (
   <Fragment>
     <NavBar currentPage={1} />
     <div className="container mx-auto">
-      <div className="flex flex-row">
-        <div className="w-2/6 flex flex-col justify-center p-20">
+      <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row">
+        <div className="w-full sm:w-full md:w-2/6 lg:w-2/6 xl:w-2/6 flex flex-col justify-center p-20 mx-auto md:mx-0 lg:mx-0 xl:mx-0">
           <img
             src={Rachel}
             alt="Rachel"
             className="rounded-full flex items-center justify-center overflow-hidden shadow-2xl"
           />
         </div>
-        <div className="w-4/6 p-20 h-full">
+        <div className="w-full sm:w-full md:w-4/6 lg:w-4/6 xl:w-4/6 p-20 md:h-full lg:h-full xl:h-full mx-auto md:mx-0 lg:mx-0 xl:mx-0">
           <div className="flex items-center mx-auto">
             <div>
               <p className="mb-2">
