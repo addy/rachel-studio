@@ -216,6 +216,7 @@ class Contact extends Component {
               <button
                 type="button"
                 className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow opacity-50 cursor-not-allowed"
+                title="Submitting..."
               >
                 <PulseLoader sizeUnit="px" size={10} loading={saving} />
               </button>
@@ -237,6 +238,7 @@ class Contact extends Component {
                   <button
                     type="button"
                     className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow opacity-50 cursor-not-allowed"
+                    title="Please fill out all fields."
                   >
                     Submit
                   </button>
