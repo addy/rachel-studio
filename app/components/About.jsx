@@ -7,7 +7,7 @@ const About = () => (
   <Fragment>
     <NavBar currentPage={1} />
     <div className="container mx-auto">
-      <div className="flex flex-col lg:flex-row xl:flex-row">
+      <div className="container flex flex-col lg:flex-row xl:flex-row">
         <div className="w-1/2 lg:w-2/6 xl:w-2/6 flex flex-col justify-center p-4 lg:p-20 xl:p-20 mx-auto lg:mx-0 xl:mx-0">
           <img
             src={Rachel}
@@ -40,6 +40,11 @@ const About = () => (
         <img src={Studio} alt="Studio" className="shadow-2xl" />
       </div>
     </div>
+    <footer className="w-full text-center p-4 mt-2">
+      <a href="https://www.instagram.com/rachelvshaw/">
+        <ion-icon name="logo-instagram" size="large" />
+      </a>
+    </footer>
   </Fragment>
 );
 
