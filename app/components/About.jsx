@@ -40,11 +40,6 @@ const About = () => (
         <img src={Studio} alt="Studio" className="shadow-2xl" />
       </div>
     </div>
-    <footer className="w-full text-center p-4 mt-2">
-      <a href="https://www.instagram.com/rachelvshaw/">
-        <ion-icon name="logo-instagram" size="large" />
-      </a>
-    </footer>
   </Fragment>
 );
 
