@@ -17,20 +17,20 @@ const About = () => (
         </div>
         <div className="w-full lg:w-4/6 xl:w-4/6 p-4 lg:p-20 xl:p-20 lg:h-full xl:h-full mx-auto lg:mx-0 xl:mx-0">
           <div className="container mx-auto">
-            <p className="my-4">
+            <div className="my-4">
               Rachel Shaw is an oil painter based out of Kansas City. She graduated with a BFA from
               Kansas State University with a focus in painting.
-            </p>
-            <p className="my-4">
+            </div>
+            <div className="my-4">
               While her primary passion is portraiture, she has recently begun experimenting with
               small still lives and abstract compositions. Due to the personalized nature of her
               style, most of her paintings are done on a commission basis. There is nothing Rachel
               likes better than representing loved ones and objects through paint.
-            </p>
-            <p className="my-4">
+            </div>
+            <div className="my-4">
               Please do not hesitate to reach out to her with your painting proposals. She is a
               motivated artist who genuinely wants to work with you!
-            </p>
+            </div>
           </div>
         </div>
       </div>
