@@ -11,37 +11,11 @@ const Portfolio = () => (
   <Fragment>
     <NavBar currentPage={0} />
     <div className="container mx-auto">
-      <div className="container flex items-center flex-row">
-        <CardDetails
-          src={Sister}
-          alt="Sister"
-          title="Lexie"
-          text="My sister"
-          tags={['sister', 'cool']}
-        />
-        <CardDetails
-          src={Suze}
-          alt="Susan"
-          title="Susan"
-          text="My friend"
-          tags={['friend', 'cool']}
-        />
-        <CardDetails
-          src={Plant}
-          alt="Plant"
-          title="Plant"
-          text="My plant"
-          tags={['pot', 'plant']}
-        />
-      </div>
-      <div className="container flex items-center flex-row">
-        <CardDetails
-          src={Seahorse}
-          alt="Seahorse"
-          title="Seahorse"
-          text="My seahorse"
-          tags={['sea', 'horse']}
-        />
+      <div className="container flex items-center flex-row flex-wrap">
+        <CardDetails src={Sister} alt="Sister" title="Lexie" text="My sister" />
+        <CardDetails src={Suze} alt="Susan" title="Susan" text="My friend" />
+        <CardDetails src={Plant} alt="Plant" title="Plant" text="My plant" />
+        <CardDetails src={Seahorse} alt="Seahorse" title="Seahorse" text="My seahorse" />
       </div>
     </div>
   </Fragment>
