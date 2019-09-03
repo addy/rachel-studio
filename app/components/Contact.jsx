@@ -104,7 +104,7 @@ class Contact extends Component {
     const color = formResponseCode !== undefined && formResponseCode === 200 ? 'green' : 'red';
 
     return (
-      <div className="w-full flex flex-row justify-center">
+      <div className="flex items-center justify-center w-full h-full">
         {formResponseCode && (
           <div
             className={`w-1/2 bg-${color}-100 border border-${color}-400 text-${color}-700 px-4 py-3 rounded relative mx-auto mb-5`}
