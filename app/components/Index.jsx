@@ -1,4 +1,5 @@
 import React from 'react';
+import withNav from './hoc/withNav';
 import Suze from '../images/suze.jpg';
 
 const Index = () => (
@@ -21,4 +22,4 @@ const Index = () => (
   </div>
 );
 
-export default Index;
+export default withNav(Index, 0);

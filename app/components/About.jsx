@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import withNav from './hoc/withNav';
 import Rachel from '../images/rachel.jpg';
 import Studio from '../images/studio.jpg';
 
@@ -42,4 +43,4 @@ const About = () => (
   </Fragment>
 );
 
-export default About;
+export default withNav(About, 2);
