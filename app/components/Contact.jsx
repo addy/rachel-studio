@@ -104,7 +104,8 @@ class Contact extends Component {
     const color = formResponseCode !== undefined && formResponseCode === 200 ? 'green' : 'red';
 
     return (
-      <div className="flex items-center justify-center w-full h-full">
+      // tailwindcss: bg-green-100 bg-red-100 border border-green-400 border-red-400 text-green-700 text-red-700 text-green-500 text-red-500 px-4 py-3 mb-5
+      <div className="flex flex-col items-center justify-center w-full h-full">
         {formResponseCode && (
           <div
             className={`w-1/2 bg-${color}-100 border border-${color}-400 text-${color}-700 px-4 py-3 rounded relative mx-auto mb-5`}

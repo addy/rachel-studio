@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const CardDetails = ({ src, alt, title, text }) => (
   <div className="w-full lg:w-1/3 xl:w-1/3 text-center px-4 py-2 m-2s mx-auto">
     <div className="max-w-lg rounded overflow-hidden shadow-lg mx-auto">
-      <img className="w-full" src={src} alt={alt} />
+      <img className="lazy w-full" src={src} alt={alt} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">{text}</p>

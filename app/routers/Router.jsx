@@ -1,5 +1,5 @@
 import React, { Fragment, Suspense, lazy } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import withNav from '../components/hoc/withNav';
 import Loading from '../components/shared/Loading';
@@ -11,7 +11,7 @@ const Contact = lazy(() => import('../components/Contact'));
 
 const Router = () => (
   <Fragment>
-    <HashRouter>
+    <BrowserRouter>
       <Suspense fallback={Loading}>
         <Switch>
           <Route exact path="/" component={withNav(Index)} />
@@ -20,7 +20,7 @@ const Router = () => (
           <Route exact path="/contact" component={withNav(Contact, 2)} />
         </Switch>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   </Fragment>
 );
 
