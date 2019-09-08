@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import withNav from './hoc/withNav';
 
 class Contact extends Component {
   constructor(props) {
@@ -249,4 +248,4 @@ class Contact extends Component {
   }
 }
 
-export default withNav(Contact, 3);
+export default Contact;

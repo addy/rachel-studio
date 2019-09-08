@@ -1,7 +1,5 @@
 import React from 'react';
 import CardDetails from './shared/CardDetails';
-import withNav from './hoc/withNav';
-
 import Suze from '../images/suze.jpg';
 import Sister from '../images/sister.jpg';
 import Seahorse from '../images/seahorse.jpg';
@@ -18,4 +16,4 @@ const Portfolio = () => (
   </div>
 );
 
-export default withNav(Portfolio, 1);
+export default Portfolio;
