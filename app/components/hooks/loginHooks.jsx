@@ -30,18 +30,17 @@ const loginHooks = initial => {
       })
     })
       .then(res => {
-        if (res.status !== 200) {
-          // Probably want to do a generic alert at this point.
-          // eslint-disable-next-line no-console
-          console.log('Failed to login', res);
-          return;
-        }
-
-        res.json();
+        if (res.status !== 200) throw new Error('Failed to login');
+        return res.body.json();
       })
-      .then(data => {
-        const { token } = data;
+      .then(body => {
+        const { token } = body;
         setState({ ...values, token, canLogin: false });
+      })
+      .catch(err => {
+        // Probably want to do a generic alert at this point.
+        // eslint-disable-next-line no-console
+        console.log(err.message);
       });
   };
 
