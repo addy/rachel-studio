@@ -66,7 +66,7 @@ class Contact extends Component {
 
   onEmailChange = e => {
     const { value } = e.target;
-    if (value !== '' && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+    if (value !== '' && /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
       this.setState({ submissionEmail: value, email: value });
     } else {
       this.setState({ submissionEmail: '', email: value });

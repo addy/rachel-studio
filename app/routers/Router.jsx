@@ -12,6 +12,7 @@ const Contact = lazy(() => import('../components/Contact'));
 
 const Router = () => {
   const { values, handleLoginModalToggle, component } = loginHooks({
+    canLogin: true,
     loginModal: undefined,
     token: undefined
   });
@@ -25,19 +26,19 @@ const Router = () => {
               <Route
                 exact
                 path="/"
-                component={withNav(Index, values.loginModal, handleLoginModalToggle, 0)}
+                component={withNav(Index, values.canLogin, handleLoginModalToggle, 0)}
               />
               <Route
                 path="/portfolio"
-                component={withNav(Portfolio, values.loginModal, handleLoginModalToggle, 1)}
+                component={withNav(Portfolio, values.canLogin, handleLoginModalToggle, 1)}
               />
               <Route
                 path="/about"
-                component={withNav(About, values.loginModal, handleLoginModalToggle, 2)}
+                component={withNav(About, values.canLogin, handleLoginModalToggle, 2)}
               />
               <Route
                 path="/contact"
-                component={withNav(Contact, values.loginModal, handleLoginModalToggle, 3)}
+                component={withNav(Contact, values.canLogin, handleLoginModalToggle, 3)}
               />
             </Switch>
           </Suspense>

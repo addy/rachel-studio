@@ -41,7 +41,7 @@ const loginHooks = initial => {
       })
       .then(data => {
         const { token } = data;
-        setState({ ...values, token });
+        setState({ ...values, token, canLogin: false });
       });
   };
 
