@@ -1,37 +1,71 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Modal = ({ children, handleSecondary, handleClose, primaryText, secondaryText }) => (
-  <div className="animated fadeIn fixed z-50 pin overflow-auto bg-smoke-dark flex">
-    <div className="animated fadeInUp fixed shadow-inner max-w-md md:relative pin-b pin-x align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow flex flex-col">
-      <div className="container mx-auto">{children}</div>
-      <div className="inline-flex justify-center">
-        <button
-          type="button"
-          className="bg-grey-lighter flex-1 md:flex-none border-b-2 border-red ml-2 hover:bg-red-lightest text-grey-darkest font-bold py-4 px-6 rounded"
-          onClick={handleSecondary}
-        >
-          {secondaryText}
-        </button>
-        <button
-          type="submit"
-          className="bg-grey-lighter flex-1 border-b-2 md:flex-none border-green ml-2 hover:bg-green-lightest text-grey-darkest font-bold py-4 px-6 rounded"
-          form="loginForm"
-        >
-          {primaryText}
-        </button>
-      </div>
-      <button type="button" className="absolute pin-t pin-r pt-4 px-4" onClick={handleClose}>
+const Modal = ({
+  children,
+  handleSecondary,
+  handleClose,
+  title,
+  primaryText,
+  secondaryText,
+  showing
+}) => (
+  <div
+    className={`modal${
+      showing ? '' : ' opacity-0 pointer-events-none'
+    } fixed w-full h-full top-0 left-0 flex items-center justify-center`}
+  >
+    <div className="absolute w-full h-full bg-gray-900 opacity-50" />
+    <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      <button
+        className="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50"
+        type="button"
+        onClick={handleClose}
+      >
         <svg
-          className="h-12 w-12 text-grey hover:text-grey-darkest"
-          role="button"
+          className="fill-current text-white"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
         >
-          <title>Close</title>
-          <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" />
         </svg>
+        <span className="text-sm">Close</span>
       </button>
+      <div className="py-4 text-left px-6">
+        <div className="flex justify-between items-center pb-3">
+          <p className="text-2xl font-bold">{title}</p>
+          <button className="cursor-pointer z-50" type="button" onClick={handleClose}>
+            <svg
+              className="fill-current text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+            >
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" />
+            </svg>
+          </button>
+        </div>
+        {children}
+        <div className="flex justify-end pt-2">
+          <button
+            className="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"
+            type="button"
+            onClick={handleSecondary}
+          >
+            {secondaryText}
+          </button>
+          <button
+            className="px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400"
+            type="submit"
+            form="loginForm"
+          >
+            {primaryText}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 );
@@ -40,16 +74,20 @@ Modal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   handleSecondary: PropTypes.func,
   handleClose: PropTypes.func,
+  title: PropTypes.string,
   primaryText: PropTypes.string,
-  secondaryText: PropTypes.string
+  secondaryText: PropTypes.string,
+  showing: PropTypes.bool
 };
 
 Modal.defaultProps = {
   children: undefined,
   handleSecondary: undefined,
   handleClose: undefined,
+  title: undefined,
   primaryText: 'Submit',
-  secondaryText: 'Cancel'
+  secondaryText: 'Cancel',
+  showing: false
 };
 
 export default Modal;

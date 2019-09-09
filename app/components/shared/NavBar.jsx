@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const NavBar = ({ currentPage, canLogin, toggleModal }) => (
+const NavBar = ({ location, canLogin, toggleModal }) => (
   <div className="container mx-auto flex items-center font-frank">
     <div className="container mx-auto">
       <div className="flex justify-center lg:justify-end xl:justify-end lg:pr-4 xl:pr-4 mx-auto lg:mx-0 xl:mx-0">
@@ -10,7 +10,7 @@ const NavBar = ({ currentPage, canLogin, toggleModal }) => (
           <div className="text-center py-2 m-2">
             <div
               className={
-                currentPage === 0
+                location.pathname === '/'
                   ? 'text-lilac-darker'
                   : `text-lilac-lighter hover:text-lilac-darker`
               }
@@ -23,7 +23,7 @@ const NavBar = ({ currentPage, canLogin, toggleModal }) => (
           <div className="text-center py-2 m-2">
             <div
               className={
-                currentPage === 1
+                location.pathname === '/portfolio'
                   ? 'text-lilac-darker'
                   : `text-lilac-lighter hover:text-lilac-darker`
               }
@@ -36,7 +36,7 @@ const NavBar = ({ currentPage, canLogin, toggleModal }) => (
           <div className="text-center py-2 m-2">
             <div
               className={
-                currentPage === 2
+                location.pathname === '/about'
                   ? 'text-lilac-darker'
                   : `text-lilac-lighter hover:text-lilac-darker`
               }
@@ -49,7 +49,7 @@ const NavBar = ({ currentPage, canLogin, toggleModal }) => (
           <div className="text-center py-2 m-2">
             <div
               className={
-                currentPage === 3
+                location.pathname === '/contact'
                   ? 'text-lilac-darker'
                   : `text-lilac-lighter hover:text-lilac-darker`
               }
@@ -58,16 +58,18 @@ const NavBar = ({ currentPage, canLogin, toggleModal }) => (
             </div>
           </div>
         </Link>
-        <div className="text-center py-2 m-2">
-          <button
-            className={`text-lilac-lighter hover:text-lilac-darker${
-              canLogin ? '' : ' opacity-50 cursor-not-allowed'
-            }`}
-            type="button"
-            onClick={toggleModal}
-          >
-            Login
-          </button>
+        <div className="text-lg w-1/3 lg:w-auto xl:w-auto">
+          <div className="text-center py-2 m-2">
+            <button
+              className={`text-lilac-lighter hover:text-lilac-darker${
+                canLogin ? '' : ' opacity-50 cursor-not-allowed'
+              }`}
+              type="button"
+              onClick={toggleModal}
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -87,4 +89,4 @@ NavBar.defaultProps = {
   toggleModal: undefined
 };
 
-export default NavBar;
+export default withRouter(NavBar);

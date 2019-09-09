@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
-class Contact extends Component {
+class Contact extends PureComponent {
   constructor(props) {
     super(props);
 

@@ -53,17 +53,13 @@ const loginHooks = initial => {
     values,
     handleLoginModalToggle,
     component: (
-      <Fragment>
-        {values.loginModal && (
-          <LoginModal
-            inputs={inputs}
-            handleInputChange={handleInputChange}
-            handleSubmit={handleSubmit}
-            handleFormCancel={handleLoginModalToggle}
-          />
-        )}
-        {values.token && <div className="container mx-auto">{values.token}</div>}
-      </Fragment>
+      <LoginModal
+        inputs={inputs}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        handleFormCancel={handleLoginModalToggle}
+        showing={values.loginModal}
+      />
     )
   };
 };
