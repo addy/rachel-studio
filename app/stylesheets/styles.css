@@ -43,3 +43,7 @@
 .font-frank {
   font-family: 'Frank Ruhl Libre', serif;
 }
+
+.modal {
+  transition: opacity 0.25s ease;
+}
