@@ -7,8 +7,14 @@ const loginHooks = initial => {
 
   const handleLoginModalToggle = e => {
     e.preventDefault();
-    const { loginModal } = values;
-    setState(() => ({ ...values, loginModal: !loginModal }));
+    let { loginModal } = values;
+    loginModal = !loginModal;
+
+    if (loginModal) {
+      setState(() => ({ ...values, loginModal }));
+    } else {
+      setState(() => ({ ...values, loginModal, username: undefined, password: undefined }));
+    }
   };
 
   const handleLogin = () => {
