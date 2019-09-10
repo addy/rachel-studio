@@ -1,14 +1,20 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import LoginModal from '../shared/LoginModal';
 import formHooks from './formHooks';
 
-const loginHooks = initial => {
+export default initial => {
   const [values, setState] = useState(initial);
 
   const handleLoginModalToggle = e => {
     e.preventDefault();
-    const { loginModal } = values;
-    setState(() => ({ ...values, loginModal: !loginModal }));
+    let { loginModal } = values;
+    loginModal = !loginModal;
+
+    if (loginModal) {
+      setState(() => ({ ...values, loginModal }));
+    } else {
+      setState(() => ({ ...values, loginModal, username: undefined, password: undefined }));
+    }
   };
 
   const handleLogin = () => {
@@ -63,5 +69,3 @@ const loginHooks = initial => {
     )
   };
 };
-
-export default loginHooks;
