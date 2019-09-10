@@ -1,14 +1,17 @@
 import React, { memo } from 'react';
+import useAnimation from './hooks/animationHooks';
 import Suze from '../images/suze.jpg';
 
 const Index = memo(
   () => {
+    const animation = useAnimation('elastic', 800, 60);
     return (
       <div className="flex flex-col items-center justify-center flex-grow">
         <img
           src={Suze}
           alt="Suze"
           className="flex-none w-1/2 lg:w-1/6 xl:w-1/6 rounded-full flex items-center justify-center overflow-hidden shadow-2xl"
+          style={{ marginTop: animation * 200 - 100 }}
         />
         <div className="italic text-5xl md:text-7xl font-archivo text-lilac-darker">
           &quot;Color Me Impressed&quot;

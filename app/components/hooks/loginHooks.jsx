@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import LoginModal from '../shared/LoginModal';
 import formHooks from './formHooks';
 
-const loginHooks = initial => {
+export default initial => {
   const [values, setState] = useState(initial);
 
   const handleLoginModalToggle = e => {
@@ -69,5 +69,3 @@ const loginHooks = initial => {
     )
   };
 };
-
-export default loginHooks;

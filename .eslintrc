@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier", "hooks"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": ["error"],
     "react/forbid-prop-types": 0,

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition } from 'react-transition-group';
+import useAnimation from '../hooks/animationHooks';
 
 const Modal = ({
   children,
@@ -10,16 +10,30 @@ const Modal = ({
   primaryText,
   secondaryText,
   showing
-}) => (
-  // tailwindcss: modal-enter modal-enter-active modal-exit modal-exit-active
-  <CSSTransition in={showing} timeout={200} classNames="modal" unmountOnExit>
-    <div className="fixed w-full h-full top-0 left-0 flex items-center justify-center">
+}) => {
+  const [closed, setClosed] = useState(false);
+  const open = useAnimation('linear', 200, 0, !showing);
+  const close = useAnimation('linear', 200, 0, !closed);
+
+  const onClose = e => {
+    e.preventDefault();
+    setClosed(true);
+    handleClose(e);
+  };
+
+  return !showing ? null : (
+    <div
+      className={`fixed w-full h-full top-0 left-0 flex items-center justify-center${
+        showing ? '' : ' pointer-events-none'
+      }`}
+      style={{ opacity: open }}
+    >
       <div className="absolute w-full h-full bg-gray-900 opacity-50" />
       <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
         <button
           className="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50"
           type="button"
-          onClick={handleClose}
+          onClick={onClose}
         >
           <svg
             className="fill-current text-white"
@@ -35,7 +49,7 @@ const Modal = ({
         <div className="py-4 text-left px-6">
           <div className="flex justify-between items-center pb-3">
             <p className="text-2xl font-bold">{title}</p>
-            <button className="cursor-pointer z-50" type="button" onClick={handleClose}>
+            <button className="cursor-pointer z-50" type="button" onClick={onClose}>
               <svg
                 className="fill-current text-black"
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +81,9 @@ const Modal = ({
         </div>
       </div>
     </div>
-  </CSSTransition>
-);
+    // tailwindcss: modal-enter modal-enter-active modal-exit modal-exit-active pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center
+  );
+};
 
 Modal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
