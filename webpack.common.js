@@ -86,8 +86,6 @@ module.exports = {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
-        default: false,
-        vendors: false,
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
