@@ -78,13 +78,12 @@ const NavBar = ({ location, canLogin, toggleModal }) => (
 );
 
 NavBar.propTypes = {
-  currentPage: PropTypes.number,
+  location: PropTypes.object.isRequired,
   canLogin: PropTypes.bool,
   toggleModal: PropTypes.func
 };
 
 NavBar.defaultProps = {
-  currentPage: undefined,
   canLogin: true,
   toggleModal: undefined
 };
