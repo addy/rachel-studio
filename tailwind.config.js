@@ -21,6 +21,15 @@ module.exports = {
           lighter: '#f9e38d',
           default: '#f8dd74',
           darker: '#e2c96a'
+        },
+        smoke: {
+          lightest: 'rgba(0, 0, 0, 0.1)',
+          lighter: 'rgba(0, 0, 0, 0.25)',
+          light: 'rgba(0, 0, 0, 0.4)',
+          default: 'rgba(0, 0, 0, 0.5)',
+          dark: 'rgba(0, 0, 0, 0.6)',
+          darker: 'rgba(0, 0, 0, 0.75)',
+          darkest: 'rgba(0, 0, 0, 0.9)'
         }
       },
       fontSize: {
