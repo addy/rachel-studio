@@ -31,7 +31,7 @@ const reducer = (state, action) => {
         ...state,
         alert: 'success',
         alertTitle: 'Success!',
-        alertMessage: 'We have received your message and will reply shortly.'
+        alertMessage: 'We have received your message and will reply to you shortly.'
       };
     case 'contactFailure':
       return {
