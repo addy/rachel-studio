@@ -7,7 +7,7 @@ import { flatten } from './utils';
 
 const Form = ({ fields, children, submit, redirectPath }) => {
   const [inputs, setInputs] = useState({});
-  const [{ alerting, submitting }, dispatch] = useStateValue();
+  const [{ alert, submitting }, dispatch] = useStateValue();
 
   useEffect(() => {
     setInputs(flatten(fields));
@@ -62,7 +62,7 @@ const Form = ({ fields, children, submit, redirectPath }) => {
     setInputs(() => ({ ...inputs, [name]: { ...inputs[name], valid: true } }));
   };
 
-  return alerting && !submitting && redirectPath ? (
+  return alert && !submitting && redirectPath ? (
     <Redirect to={redirectPath} />
   ) : (
     <div className="flex justify-center w-full">

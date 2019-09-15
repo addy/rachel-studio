@@ -17,7 +17,8 @@ const CheckoutForm = ({ stripe }) => {
       body: JSON.stringify({ token: token.id, email: email.value })
     });
 
-    if (res.ok) dispatch({ type: 'show' });
+    if (res.ok) dispatch({ type: 'paymentSuccess' });
+    else dispatch({ type: 'paymentFailure' });
   };
 
   return (

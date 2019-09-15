@@ -24,7 +24,8 @@ const Contact = () => {
       })
     });
 
-    if (res.ok) dispatch({ type: 'show' });
+    if (res.ok) dispatch({ type: 'contactSuccess' });
+    else dispatch({ type: 'contactFailure' });
   };
 
   return (
