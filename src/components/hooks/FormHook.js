@@ -1,12 +1,7 @@
 import { useState } from 'react';
 
-const formHooks = (initial, callback) => {
+const FormHook = initial => {
   const [inputs, setInputs] = useState(initial);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (callback) callback();
-  };
 
   const handleInputChange = e => {
     e.persist();
@@ -16,10 +11,9 @@ const formHooks = (initial, callback) => {
   };
 
   return {
-    handleSubmit,
     handleInputChange,
     inputs
   };
 };
 
-export default formHooks;
+export default FormHook;

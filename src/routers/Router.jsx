@@ -1,40 +1,37 @@
 import React, { Fragment, Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GAListener from '../components/shared/GAListener';
+import Store from '../components/hooks/Store';
 import Loading from '../components/shared/Loading';
 import Index from '../components/Index';
 import NavBar from '../components/shared/NavBar';
-import loginHooks from '../components/hooks/loginHooks';
+import Alert from '../components/shared/Alert';
 
 const Portfolio = lazy(() => import('../components/Portfolio'));
 const About = lazy(() => import('../components/About'));
 const Contact = lazy(() => import('../components/Contact'));
+const Checkout = lazy(() => import('../components/Checkout'));
 
 const Router = () => {
-  const { values, handleLoginModalToggle, component } = loginHooks({
-    canLogin: true,
-    loginModal: undefined,
-    token: undefined
-  });
-
-  const { canLogin } = values;
-
   return (
     <Fragment>
       <BrowserRouter>
         <GAListener trackingID="UA-136081513-3">
-          <NavBar canLogin={canLogin} toggleModal={handleLoginModalToggle} />
-          <Suspense fallback={Loading}>
-            <Switch>
-              <Route exact path="/" component={Index} />
-              <Route path="/portfolio" component={Portfolio} />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-            </Switch>
-          </Suspense>
+          <Store>
+            <NavBar />
+            <Alert />
+            <Suspense fallback={Loading}>
+              <Switch>
+                <Route exact path="/" component={Index} />
+                <Route path="/portfolio" component={Portfolio} />
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/checkout" component={Checkout} />
+              </Switch>
+            </Suspense>
+          </Store>
         </GAListener>
       </BrowserRouter>
-      {component}
     </Fragment>
   );
 };

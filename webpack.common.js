@@ -8,17 +8,17 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const PATHS = {
-  src: path.join(__dirname, 'app')
+  src: path.join(__dirname, 'src')
 };
 
 class TailwindExtractor {
   static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g);
+    return content.match(/[A-z0-9-:/]+/g);
   }
 }
 
 module.exports = {
-  entry: './app/index.jsx',
+  entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -66,7 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html'
+      template: 'src/index.html'
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',

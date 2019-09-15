@@ -61,3 +61,34 @@
   opacity: 0;
   transition: opacity 0.25s ease;
 }
+
+.Checkout {
+  margin: 0 auto;
+  max-width: 800px;
+  box-sizing: border-box;
+  padding: 0 5px;
+}
+
+input,
+.StripeElement {
+  display: block;
+  font-size: 1rem;
+  outline: 0;
+}
+
+input::placeholder {
+  color: #a0aec0;
+}
+
+.ElementsApp {
+  font-size: 1rem !important;
+}
+
+input,
+.ElementsApp {
+  font-size: 1rem !important;
+}
+
+.focused {
+  background: white;
+}
