@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import useAnimation from '../hooks/animationHooks';
 import { useStateValue } from '../hooks/State';
 
 const Alert = () => {
   const [{ alert, alertTitle, alertMessage }, dispatch] = useStateValue();
+  const fadeAnimation = useAnimation('linear', 500, 0, !alert);
+  const slideAnimation = useAnimation('linear', 500, 250, !alert);
   const [color, setColor] = useState(undefined);
 
   useEffect(() => {
@@ -14,8 +17,9 @@ const Alert = () => {
   return alert ? (
     // tailwindcss: bg-green-100 bg-red-100 border border-green-400 border-red-400 text-green-700 text-red-700 text-green-500 text-red-500 px-4 py-3 mb-5
     <div
-      className={`container mx-auto rounded relative top-0 close flex items-center justify-between w-full px-4 py-3 shadow bg-${color}-100 border border-${color}-400 text-${color}-700`}
+      className={`container mx-auto rounded absolute left-0 right-0 close flex items-center justify-between w-full px-4 py-3 shadow bg-${color}-100 border border-${color}-400 text-${color}-700`}
       role="alert"
+      style={{ opacity: `${fadeAnimation}`, top: `${slideAnimation * 4}rem` }}
     >
       <span className="block sm:inline">
         <strong className="font-bold">{alertTitle}</strong>

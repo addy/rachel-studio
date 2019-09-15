@@ -15,7 +15,7 @@ const Form = ({ fields, children, submit, redirectPath }) => {
   }, []);
 
   const verify = input => {
-    switch (input.name) {
+    switch (input.type) {
       case 'email':
         return (
           Boolean(input.value) && /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(input.value)
@@ -70,7 +70,10 @@ const Form = ({ fields, children, submit, redirectPath }) => {
         <div className="flex flex-wrap -mx-3 mb-2">
           {Object.entries(inputs).map(([name, input]) => {
             return (
-              <div key={name} className={input.depth > 1 ? `w-1/${input.depth}` : 'w-full'}>
+              <div
+                key={name}
+                className={`px-2 ${input.depth > 1 ? `lg:w-1/${input.depth} w-full` : 'w-full'}`}
+              >
                 <Input
                   id={`grid-${name}`}
                   type={input.type}
@@ -90,26 +93,28 @@ const Form = ({ fields, children, submit, redirectPath }) => {
           ) : (
             <div className="w-full">{children}</div>
           )}
-          {submitting ? (
-            <button
-              type="button"
-              className="bg-indigo-200 text-gray-200 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed"
-            >
-              Submitting...
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="bg-indigo-400 hover:bg-indigo-300 text-gray-200 hover:text-gray-100 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
-              onClick={onSubmit}
-            >
-              Submit
-            </button>
-          )}
+          <div className="px-2">
+            {submitting ? (
+              <button
+                type="button"
+                className="bg-indigo-200 text-gray-200 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed"
+              >
+                Submitting...
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="bg-indigo-400 hover:bg-indigo-300 text-gray-200 hover:text-gray-100 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
+                onClick={onSubmit}
+              >
+                Submit
+              </button>
+            )}
+          </div>
         </div>
       </form>
     </div>
-    // tailwindcss: w-full w-1/2 w-1/3 w-1/4 w-1/5 w-1/6
+    // tailwindcss: w-full lg:w-1/2 lg:w-1/3 lg:w-1/4 lg:w-1/5 lg:w-1/6 px-2
   );
 };
 

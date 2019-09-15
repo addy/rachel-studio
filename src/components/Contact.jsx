@@ -33,8 +33,10 @@ const Contact = memo(
       <div className="flex flex-col items-center justify-center w-full h-full px-10 lg:px-0">
         <Form
           fields={[
-            { name: 'first name', type: 'input', placeholder: 'Jane' },
-            { name: 'last name', type: 'input', placeholder: 'Doe' },
+            [
+              { name: 'first name', type: 'input', placeholder: 'Jane' },
+              { name: 'last name', type: 'input', placeholder: 'Doe' }
+            ],
             { name: 'email', type: 'email', placeholder: 'jane.doe@email.com' },
             { name: 'message', type: 'text', placeholder: '...' }
           ]}
