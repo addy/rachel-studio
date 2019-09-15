@@ -57,7 +57,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
-    "deploy": "git pull origin master && yarn build && rm -rf /var/www/rachelshawstudio.com/ && mkdir /var/www/rachelshawstudio.com/ && cp -r ~/projects/rachel-studio/dist/* /var/www/rachelshawstudio.com/ && service nginx restart"
+    "transfer": "rm -rf /var/www/rachelshawstudio.com/ && mkdir /var/www/rachelshawstudio.com/ && cp -r ~/projects/rachel-studio/dist/* /var/www/rachelshawstudio.com/ && service nginx restart",
+    "deploy": "git pull origin master && yarn install && rm -rf dist && yarn build && yarn transfer"
   },
   "browserslist": [
     "> 1%",
