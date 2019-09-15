@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 
-const NavBar = ({ location, canLogin, toggleModal }) => (
+const NavBar = ({ location }) => (
   <div className="container mx-auto flex items-center font-frank">
     <div className="container mx-auto">
       <div className="flex justify-center lg:justify-end xl:justify-end lg:pr-4 xl:pr-4 mx-auto lg:mx-0 xl:mx-0">
@@ -58,19 +58,6 @@ const NavBar = ({ location, canLogin, toggleModal }) => (
             </div>
           </div>
         </Link>
-        <div className="text-lg w-1/3 lg:w-auto xl:w-auto">
-          <div className="text-center py-2 m-2">
-            <button
-              className={`text-lilac-lighter hover:text-lilac-darker${
-                canLogin ? '' : ' opacity-50 cursor-not-allowed'
-              }`}
-              type="button"
-              onClick={toggleModal}
-            >
-              Login
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -78,14 +65,7 @@ const NavBar = ({ location, canLogin, toggleModal }) => (
 );
 
 NavBar.propTypes = {
-  location: PropTypes.object.isRequired,
-  canLogin: PropTypes.bool,
-  toggleModal: PropTypes.func
-};
-
-NavBar.defaultProps = {
-  canLogin: true,
-  toggleModal: undefined
+  location: PropTypes.object.isRequired
 };
 
 export default withRouter(NavBar);

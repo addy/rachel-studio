@@ -7,7 +7,7 @@ const CardDetails = ({ src, alt, title, text }) => (
       <img className="lazy w-full" src={src} alt={alt} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 font-frank italic text-indigo-400">{title}</div>
-        <p className="text-gray-700 text-base">{text}</p>
+        {text && <p className="text-gray-700 text-base">{text}</p>}
       </div>
     </div>
   </div>
@@ -17,7 +17,11 @@ CardDetails.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string
+};
+
+CardDetails.defaultProps = {
+  text: undefined
 };
 
 export default CardDetails;
