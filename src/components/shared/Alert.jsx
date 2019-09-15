@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import useAnimation from '../hooks/animationHooks';
-import { useStateValue } from '../hooks/State';
+import useAnimation from '../hooks/useAnimation';
+import { useStore } from '../hooks/State';
+import useLocalForage, { actionTypes, statusTypes } from '../hooks/useLocalForage';
 
 const Alert = () => {
-  const [{ alert, alertTitle, alertMessage }, dispatch] = useStateValue();
+  const [{ status, response }, makeRequest] = useLocalForage(actionTypes.GET, 'alert');
+  const [deleteState, makeDeleteRequest] = useLocalForage(actionTypes.DELETE, 'alert');
+  const [{ alert, alertTitle, alertMessage }, dispatch] = useStore();
   const fadeAnimation = useAnimation('linear', 500, 0, !alert);
   const slideAnimation = useAnimation('linear', 500, 250, !alert);
   const [color, setColor] = useState(undefined);
@@ -12,7 +15,13 @@ const Alert = () => {
     if (alert) {
       setColor(alert === 'success' ? 'green' : 'red');
     }
-  }, [alert]);
+
+    if (!status) {
+      makeRequest();
+    } else if (status === statusTypes.SUCCESS && !deleteState.status)
+      dispatch({ type: 'loadAlert', alert: response });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [alert, status, deleteState]);
 
   return alert ? (
     // tailwindcss: bg-green-100 bg-red-100 border border-green-400 border-red-400 text-green-700 text-red-700 text-green-500 text-red-500 px-4 py-3 mb-5
@@ -27,7 +36,10 @@ const Alert = () => {
       </span>
       <button
         className="absolute top-0 bottom-0 right-0 px-4 py-3"
-        onClick={() => dispatch({ type: 'hideAlert' })}
+        onClick={() => {
+          makeDeleteRequest();
+          dispatch({ type: 'hideAlert' });
+        }}
         type="button"
       >
         <svg

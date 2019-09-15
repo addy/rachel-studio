@@ -23,7 +23,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         alert: 'failure',
-        alertTitle: 'Payment Failed!',
+        alertTitle: 'Uh oh!',
         alertMessage: 'There was a problem with your order. Please try again later.'
       };
     case 'contactSuccess':
@@ -37,11 +37,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         alert: 'failure',
-        alertTitle: 'Failure!',
+        alertTitle: 'Uh oh!',
         alertMessage: 'There was a problem with sending your message. Please try again later.'
       };
-    case 'hideAlert':
+    case 'hideAlert': {
       return { ...state, alert: undefined, alertTitle: undefined, alertMessage: undefined };
+    }
+    case 'loadAlert': {
+      return { ...state, ...action.alert };
+    }
     case 'startSubmit':
       return { ...state, submitting: true };
     case 'stopSubmit':

@@ -8,6 +8,7 @@ import NavBar from '../components/shared/NavBar';
 import Alert from '../components/shared/Alert';
 
 const Portfolio = lazy(() => import('../components/Portfolio'));
+const Details = lazy(() => import('../components/Details'));
 const About = lazy(() => import('../components/About'));
 const Contact = lazy(() => import('../components/Contact'));
 const Checkout = lazy(() => import('../components/Checkout'));
@@ -23,7 +24,8 @@ const Router = () => {
             <Suspense fallback={Loading}>
               <Switch>
                 <Route exact path="/" component={Index} />
-                <Route path="/portfolio" component={Portfolio} />
+                <Route exact path="/portfolio" component={Portfolio} />
+                <Route exact path="/portfolio/:id" component={Details} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/checkout" component={Checkout} />

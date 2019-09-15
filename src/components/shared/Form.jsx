@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Input from './Input';
-import { useStateValue } from '../hooks/State';
+import { useStore } from '../hooks/State';
 import { flatten } from './utils';
 
-const Form = ({ fields, children, submit, redirectPath }) => {
+const Form = ({ fields, children, submit, redirectPath, fetching }) => {
   const [inputs, setInputs] = useState({});
-  const [{ alert, submitting }, dispatch] = useStateValue();
+  const [state, dispatch] = useStore();
 
   useEffect(() => {
     setInputs(flatten(fields));
@@ -62,7 +62,7 @@ const Form = ({ fields, children, submit, redirectPath }) => {
     setInputs(() => ({ ...inputs, [name]: { ...inputs[name], valid: true } }));
   };
 
-  return alert && !submitting && redirectPath ? (
+  return state.alert && !state.submitting && !fetching && redirectPath ? (
     <Redirect to={redirectPath} />
   ) : (
     <div className="flex justify-center w-full">
@@ -89,12 +89,12 @@ const Form = ({ fields, children, submit, redirectPath }) => {
             );
           })}
           {Array.isArray(children) ? (
-            children.map(child => <div className="w-full">{child}</div>)
+            children.map(child => <div className="w-full px-2">{child}</div>)
           ) : (
-            <div className="w-full">{children}</div>
+            <div className="w-full px-2">{children}</div>
           )}
           <div className="px-2">
-            {submitting ? (
+            {state.submitting ? (
               <button
                 type="button"
                 className="bg-indigo-200 text-gray-200 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed"
@@ -122,13 +122,15 @@ Form.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])),
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   submit: PropTypes.func.isRequired,
-  redirectPath: PropTypes.string
+  redirectPath: PropTypes.string,
+  fetching: PropTypes.bool
 };
 
 Form.defaultProps = {
   fields: [],
   children: undefined,
-  redirectPath: undefined
+  redirectPath: undefined,
+  fetching: false
 };
 
 export default Form;

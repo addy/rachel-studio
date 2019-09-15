@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Form from './Form';
-import { useStateValue } from '../hooks/State';
+import { useStore } from '../hooks/State';
+import useLocalForage, { actionTypes, statusTypes } from '../hooks/useLocalForage';
 
 const CheckoutForm = ({ stripe }) => {
-  const [, dispatch] = useStateValue();
+  const [{ alert, alertTitle, alertMessage }, dispatch] = useStore();
+  const [{ status }, makeRequest] = useLocalForage(actionTypes.SET, 'alert');
   const [focused, setFocus] = useState(false);
+
+  useEffect(() => {
+    if (!status && alert) makeRequest({ alert, alertTitle, alertMessage });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status, alert, makeRequest]);
 
   const onSubmit = async values => {
     const { fullName, email } = values;
@@ -27,6 +34,7 @@ const CheckoutForm = ({ stripe }) => {
         fields={[{ name: 'full name', type: 'input' }, { name: 'email', type: 'email' }]}
         submit={onSubmit}
         redirectPath="/portfolio"
+        fetching={status && status === statusTypes.FETCHING}
       >
         <div
           className={`${

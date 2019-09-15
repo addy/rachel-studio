@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import useAnimation from './hooks/animationHooks';
+import useAnimation from './hooks/useAnimation';
 import Suze from '../images/suze.jpg';
 
 const Index = memo(
