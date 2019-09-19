@@ -11,7 +11,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const Critters = require('critters-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
 const PATHS = {
   src: path.join(__dirname, 'src')
 };
@@ -26,7 +25,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
     publicPath: '/'
   },
   module: {
@@ -74,8 +73,8 @@ module.exports = {
       template: 'src/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[name].[contenthash].css'
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
@@ -96,6 +95,7 @@ module.exports = {
     })
   ],
   optimization: {
+    moduleIds: 'hashed',
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
