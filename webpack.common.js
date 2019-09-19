@@ -1,5 +1,6 @@
 const path = require('path');
 const glob = require('glob');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -80,6 +81,9 @@ module.exports = {
           extensions: ['html', 'js', 'jsx']
         }
       ]
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
     })
   ],
   optimization: {
@@ -95,7 +99,7 @@ module.exports = {
         common: {
           name: 'common',
           minChunks: 2,
-          chunks: 'async',
+          chunks: 'all',
           priority: 10,
           reuseExistingChunk: true,
           enforce: true
