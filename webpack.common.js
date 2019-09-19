@@ -1,5 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const glob = require('glob');
+const autoprefixer = require('autoprefixer');
+const tailwindcss = require('tailwindcss');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -47,7 +50,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [require('autoprefixer'), require('tailwindcss')('./tailwind.config.js')]
+              plugins: [autoprefixer, tailwindcss('./tailwind.config.js')]
             }
           }
         ]

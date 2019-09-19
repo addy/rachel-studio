@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const merge = require('webpack-merge');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
