@@ -5,7 +5,7 @@ import Form from './Form';
 import { useStore } from '../hooks/State';
 import useLocalForage, { actionTypes, statusTypes } from '../hooks/useLocalForage';
 
-const CheckoutForm = ({ stripe }) => {
+const CheckoutForm = ({ stripeLoaded, stripe }) => {
   const [{ alert, alertTitle, alertMessage }, dispatch] = useStore();
   const [{ status }, makeRequest] = useLocalForage(actionTypes.SET, 'alert');
   const [focused, setFocus] = useState(false);
@@ -36,32 +36,41 @@ const CheckoutForm = ({ stripe }) => {
         redirectPath="/portfolio"
         fetching={status && status === statusTypes.FETCHING}
       >
-        <div
-          className={`${
-            focused ? 'focused ' : ''
-          }block w-full bg-gray-200 text-gray-700 text-base placeholder-gray-400 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight shadow-md focus:border-blue-400 focus:outline-none focus:bg-white`}
-        >
-          <CardElement
-            style={{
-              base: {
-                color: '#32325d',
-                fontFamily: 'Archivo',
-                '::placeholder': {
-                  color: '#aab7c4'
+        {stripeLoaded ? (
+          <div
+            className={`${
+              focused ? 'focused ' : ''
+            }block w-full bg-gray-200 text-gray-700 text-base placeholder-gray-400 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight shadow-md focus:border-blue-400 focus:outline-none focus:bg-white`}
+          >
+            <CardElement
+              style={{
+                base: {
+                  color: '#32325d',
+                  fontFamily: 'Archivo',
+                  '::placeholder': {
+                    color: '#aab7c4'
+                  }
                 }
-              }
-            }}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-          />
-        </div>
+              }}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+            />
+          </div>
+        ) : (
+          undefined
+        )}
       </Form>
     </div>
   );
 };
 
 CheckoutForm.propTypes = {
-  stripe: PropTypes.object.isRequired
+  stripeLoaded: PropTypes.bool.isRequired,
+  stripe: PropTypes.object
+};
+
+CheckoutForm.defaultProps = {
+  stripe: null
 };
 
 export default injectStripe(CheckoutForm);
