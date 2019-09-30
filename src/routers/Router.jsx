@@ -11,7 +11,7 @@ const Portfolio = lazy(() => import('../components/Portfolio'));
 const Details = lazy(() => import('../components/Details'));
 const About = lazy(() => import('../components/About'));
 const Contact = lazy(() => import('../components/Contact'));
-const Checkout = lazy(() => import('../components/Checkout'));
+// const Checkout = lazy(() => import('../components/Checkout'));
 
 const Router = () => {
   return (
@@ -28,7 +28,7 @@ const Router = () => {
                 <Route exact path="/portfolio/:id" component={Details} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
-                <Route path="/checkout" component={Checkout} />
+                {/* <Route path="/checkout" component={Checkout} /> */}
               </Switch>
             </Suspense>
           </Store>

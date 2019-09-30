@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import useAnimation from './hooks/useAnimation';
-import Suze from '../images/suze.jpg';
+import Susan from '../images/portraits/susan.jpg';
 
 const Index = memo(
   () => {
@@ -8,8 +8,8 @@ const Index = memo(
     return (
       <div className="flex flex-col items-center justify-center flex-grow">
         <img
-          src={Suze}
-          alt="Suze"
+          src={Susan}
+          alt="Susan"
           className="flex-none w-1/2 lg:w-1/6 xl:w-1/6 rounded-full flex items-center justify-center overflow-hidden shadow-2xl"
           style={{ marginTop: animation * 200 - 100 }}
         />
