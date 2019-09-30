@@ -30,6 +30,16 @@ const Portfolio = memo(
   () => (
     <div className="container mx-auto pt-20 pb-16">
       <div className="px-4">
+        <div
+          className="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 mb-6"
+          role="alert"
+        >
+          <p className="text-sm font-archivo">
+            Select items will be available for purchase on November 1st.
+          </p>
+        </div>
+      </div>
+      <div className="px-4">
         <div className="font-frank text-indigo-500">Plants</div>
         <div className="border-t-2 border-gray-200 my-4" />
       </div>
@@ -61,10 +71,10 @@ const Portfolio = memo(
         <div className="border-t-2 border-gray-200 my-4" />
       </div>
       <div className="container flex items-center flex-row flex-wrap">
-        <CardDetails src={Seahorse} alt="Seahorse" title="Seahorse" />
+        <CardDetails src={Turtle} alt="Turtle" title="Turtle" />
         <CardDetails src={Chicken} alt="Chicken" title="Chicken" />
         <CardDetails src={Octopus} alt="Octopus" title="Octopus" />
-        <CardDetails src={Turtle} alt="Turtle" title="Turtle" />
+        <CardDetails src={Seahorse} alt="Seahorse" title="Seahorse" />
       </div>
     </div>
   ),

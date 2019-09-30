@@ -5,7 +5,7 @@ import Studio from '../images/studio.jpg';
 const About = memo(
   () => (
     <Fragment>
-      <div className="container mx-auto">
+      <div className="container mx-auto pt-20">
         <div className="container flex flex-col lg:flex-row xl:flex-row items-center">
           <div className="w-1/2 lg:w-2/6 xl:w-2/6 flex flex-col justify-center p-4 lg:p-20 xl:p-20 mx-auto lg:mx-0 xl:mx-0">
             <img
