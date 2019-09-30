@@ -4,6 +4,7 @@ import { CardElement, injectStripe } from 'react-stripe-elements';
 import Form from './Form';
 import { useStore } from '../hooks/State';
 import useLocalForage, { actionTypes, statusTypes } from '../hooks/useLocalForage';
+import { extract } from './utils';
 
 const CheckoutForm = ({ stripeLoaded, stripe }) => {
   const [{ alert, alertTitle, alertMessage }, dispatch] = useStore();
@@ -16,12 +17,12 @@ const CheckoutForm = ({ stripeLoaded, stripe }) => {
   }, [status, alert, makeRequest]);
 
   const onSubmit = async values => {
-    const { fullName, email } = values;
-    const { token } = await stripe.createToken({ name: fullName.value });
+    const { fullName, email } = extract(values);
+    const { token } = await stripe.createToken({ name: fullName });
     const res = await fetch('/api/charge', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: token.id, email: email.value })
+      body: JSON.stringify({ token: token.id, email })
     });
 
     if (res.ok) dispatch({ type: 'paymentSuccess' });

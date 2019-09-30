@@ -29,3 +29,11 @@ export const flatten = (arr, initialValue = {}, depth = 1) =>
       }
     };
   }, initialValue);
+
+export const extract = values =>
+  Object.entries(values).reduce((current, [key, value]) => {
+    return {
+      ...current,
+      [key]: value.value
+    };
+  }, {});

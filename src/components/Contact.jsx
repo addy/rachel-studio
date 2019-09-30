@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Form from './shared/Form';
 import { useStore } from './hooks/State';
-import { flatten } from './shared/utils';
+import { extract } from './shared/utils';
 import useLocalForage, { actionTypes, statusTypes } from './hooks/useLocalForage';
 
 const Contact = () => {
@@ -14,7 +14,7 @@ const Contact = () => {
   }, [status, alert, makeRequest]);
 
   const onSubmit = async values => {
-    const { firstName, lastName, email, message } = flatten(Object.values(values));
+    const { firstName, lastName, email, message } = extract(values);
 
     const res = await fetch('/api/contact', {
       method: 'POST',
@@ -24,7 +24,7 @@ const Contact = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        firstName,
+        firstName: firstName.value,
         lastName,
         email,
         message
