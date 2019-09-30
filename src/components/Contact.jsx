@@ -24,7 +24,7 @@ const Contact = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        firstName: firstName.value,
+        firstName,
         lastName,
         email,
         message
