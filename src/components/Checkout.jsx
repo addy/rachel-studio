@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import CheckoutForm from './shared/CheckoutForm';
 
-const Checkout = () => {
+const Checkout = ({ artID }) => {
   const [stripe, setStripe] = useState(null);
 
   useEffect(() => {
@@ -24,11 +25,15 @@ const Checkout = () => {
     <StripeProvider stripe={stripe}>
       <div className="container mx-auto h-full">
         <Elements>
-          <CheckoutForm stripeLoaded={Boolean(stripe)} />
+          <CheckoutForm stripeLoaded={Boolean(stripe)} artID={artID} />
         </Elements>
       </div>
     </StripeProvider>
   );
+};
+
+Checkout.propTypes = {
+  artID: PropTypes.string.isRequired
 };
 
 export default Checkout;
