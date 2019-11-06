@@ -35,18 +35,24 @@ const Portfolio = () => {
     pollArt();
   }, []);
 
+  // Lazy until I can think of a better DB schema.
+  const sectionOrder = ['plant', 'portrait', 'vector'];
+
   return sections ? (
     <div className="container mx-auto pt-20 pb-16">
-      {[...sections].map(([section, pieces]) => (
+      {sectionOrder.map(section => (
         <Fragment>
           <div className="px-4 mt-4">
-            <div className="font-frank text-indigo-500">{`${capitalize(section)}s`}</div>
+            <div className="font-frank text-xl text-indigo-500">{`${capitalize(section)}s`}</div>
             <div className="border-t-2 border-gray-200 my-4" />
           </div>
           <div className="container flex items-center flex-row flex-wrap">
-            {pieces.map(piece => (
-              <CardDetails piece={piece} />
-            ))}
+            {sections
+              .get(section)
+              .sort((a, b) => a.position - b.position)
+              .map(piece => (
+                <CardDetails piece={piece} />
+              ))}
           </div>
         </Fragment>
       ))}

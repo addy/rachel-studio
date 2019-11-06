@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import CheckoutForm from './shared/CheckoutForm';
 
-const Checkout = ({ artID }) => {
+const Checkout = ({ artID, price }) => {
   const [stripe, setStripe] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Checkout = ({ artID }) => {
     script.src = 'https://js.stripe.com/v3/';
     script.defer = true;
     script.addEventListener('load', () => {
-      setStripe(window.Stripe('pk_test_r7NDcsBCH8rsKv9bZzGpTEgx00WOJuql7Y'));
+      setStripe(window.Stripe('pk_live_wwyQ5gCk3fDHe2TOtBs831hh00I5A04kKP'));
     });
 
     document.head.appendChild(script);
@@ -23,9 +23,9 @@ const Checkout = ({ artID }) => {
 
   return (
     <StripeProvider stripe={stripe}>
-      <div className="container mx-auto h-full">
+      <div className="container mx-auto h-full mt-12 lg:mt-0">
         <Elements>
-          <CheckoutForm stripeLoaded={Boolean(stripe)} artID={artID} />
+          <CheckoutForm stripeLoaded={Boolean(stripe)} artID={artID} price={price} />
         </Elements>
       </div>
     </StripeProvider>
@@ -33,7 +33,8 @@ const Checkout = ({ artID }) => {
 };
 
 Checkout.propTypes = {
-  artID: PropTypes.string.isRequired
+  artID: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired
 };
 
 export default Checkout;

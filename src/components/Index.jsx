@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import useAnimation from './hooks/useAnimation';
-import Susan from '../images/portraits/susan.jpg';
+import Susan from '../images/susan.jpg';
 
 const Index = memo(
   () => {

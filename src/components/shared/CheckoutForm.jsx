@@ -6,8 +6,7 @@ import { useStore } from '../hooks/State';
 import useLocalForage, { actionTypes, statusTypes } from '../hooks/useLocalForage';
 import { extract } from './utils';
 
-const CheckoutForm = ({ stripeLoaded, stripe, artID }) => {
-  console.log(artID);
+const CheckoutForm = ({ stripeLoaded, stripe, artID, price }) => {
   const [{ alert, alertTitle, alertMessage }, dispatch] = useStore();
   const [{ status }, makeRequest] = useLocalForage(actionTypes.SET, 'alert');
   const [focused, setFocus] = useState(false);
@@ -23,7 +22,7 @@ const CheckoutForm = ({ stripeLoaded, stripe, artID }) => {
     const res = await fetch('/api/charge', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: token.id, email, artID })
+      body: JSON.stringify({ token: token.id, email, artID, price })
     });
 
     if (res.ok) dispatch({ type: 'paymentSuccess' });
@@ -69,11 +68,13 @@ const CheckoutForm = ({ stripeLoaded, stripe, artID }) => {
 CheckoutForm.propTypes = {
   artID: PropTypes.string.isRequired,
   stripeLoaded: PropTypes.bool.isRequired,
-  stripe: PropTypes.object
+  stripe: PropTypes.object,
+  price: PropTypes.number
 };
 
 CheckoutForm.defaultProps = {
-  stripe: null
+  stripe: null,
+  price: null
 };
 
 export default injectStripe(CheckoutForm);
