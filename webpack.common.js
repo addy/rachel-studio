@@ -1,11 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
 const autoprefixer = require('autoprefixer');
 const tailwindcss = require('tailwindcss');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-// const Critters = require('critters-webpack-plugin');
 
 module.exports = {
   mode: 'production',
