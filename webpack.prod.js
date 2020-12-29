@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { merge } = require('webpack-merge');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -16,5 +17,10 @@ module.exports = merge(common, {
       deleteOriginalAssets: false,
     }),
   ],
-  devtool: 'source-map',
+  optimization: {
+    minimize: true,
+    moduleIds: 'deterministic',
+    minimizer: ['...', new CssMinimizerPlugin()],
+    splitChunks: { chunks: 'all' },
+  },
 });

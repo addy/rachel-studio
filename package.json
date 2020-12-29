@@ -54,7 +54,7 @@
     "webpack-merge": "^5.7.3"
   },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --hot",
     "transfer": "rm -rf /var/www/rachelshawstudio.com/ && mkdir /var/www/rachelshawstudio.com/ && cp -r ~/projects/rachel-studio/dist/* /var/www/rachelshawstudio.com/ && service nginx restart",
     "deploy": "git pull origin master && yarn install && rm -rf dist && yarn build && yarn transfer"
