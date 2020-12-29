@@ -1,40 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Elements, StripeProvider } from 'react-stripe-elements';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './shared/CheckoutForm';
 
-const Checkout = ({ artID, price }) => {
-  const [stripe, setStripe] = useState(null);
+const stripePromise = loadStripe('pk_live_wwyQ5gCk3fDHe2TOtBs831hh00I5A04kKP');
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/';
-    script.defer = true;
-    script.addEventListener('load', () => {
-      setStripe(window.Stripe('pk_live_wwyQ5gCk3fDHe2TOtBs831hh00I5A04kKP'));
-    });
-
-    document.head.appendChild(script);
-    return () => {
-      setStripe(null);
-      document.head.removeChild(script);
-    };
-  }, []);
-
-  return (
-    <StripeProvider stripe={stripe}>
-      <div className="container mx-auto h-full mt-12 lg:mt-0">
-        <Elements>
-          <CheckoutForm stripeLoaded={Boolean(stripe)} artID={artID} price={price} />
-        </Elements>
-      </div>
-    </StripeProvider>
-  );
-};
+const Checkout = ({ artID, price }) => (
+  <div className="container mx-auto h-full mt-12 lg:mt-0">
+    <Elements stripe={stripePromise}>
+      <CheckoutForm artID={artID} price={price} />
+    </Elements>
+  </div>
+);
 
 Checkout.propTypes = {
   artID: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired,
 };
 
 export default Checkout;

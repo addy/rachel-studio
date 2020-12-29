@@ -13,7 +13,7 @@ const Contact = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, alert, makeRequest]);
 
-  const onSubmit = async values => {
+  const onSubmit = async (values) => {
     const { firstName, lastName, email, message } = extract(values);
 
     const res = await fetch('/api/contact', {
@@ -21,14 +21,14 @@ const Contact = () => {
       mode: 'same-origin',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         firstName,
         lastName,
         email,
-        message
-      })
+        message,
+      }),
     });
 
     if (res.ok) dispatch({ type: 'contactSuccess' });
@@ -41,10 +41,10 @@ const Contact = () => {
         fields={[
           [
             { name: 'first name', type: 'input', placeholder: 'Jane' },
-            { name: 'last name', type: 'input', placeholder: 'Doe' }
+            { name: 'last name', type: 'input', placeholder: 'Doe' },
           ],
           { name: 'email', type: 'email', placeholder: 'jane.doe@email.com' },
-          { name: 'message', type: 'text', placeholder: '...' }
+          { name: 'message', type: 'text', placeholder: '...' },
         ]}
         submit={onSubmit}
         fetching={status && status === statusTypes.FETCHING}

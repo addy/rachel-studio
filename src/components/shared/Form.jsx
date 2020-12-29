@@ -14,7 +14,7 @@ const Form = ({ fields, children, submit, redirectPath, fetching }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const verify = input => {
+  const verify = (input) => {
     switch (input.type) {
       case 'email':
         return (
@@ -25,23 +25,23 @@ const Form = ({ fields, children, submit, redirectPath, fetching }) => {
     }
   };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     dispatch({ type: 'startSubmit' });
     const values = Object.values(inputs);
-    if (!values.every(value => verify(value))) {
-      setInputs(() => values.map(value => ({ ...value, valid: verify(value) })));
+    if (!values.every((value) => verify(value))) {
+      setInputs(() => values.map((value) => ({ ...value, valid: verify(value) })));
       dispatch({ type: 'stopSubmit' });
       return;
     }
 
     await submit(inputs);
-    setInputs(() => values.map(value => ({ ...value, value: '', valid: true })));
+    setInputs(() => values.map((value) => ({ ...value, value: '', valid: true })));
     dispatch({ type: 'stopSubmit' });
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     e.preventDefault();
     e.persist();
     const { target } = e;
@@ -49,7 +49,7 @@ const Form = ({ fields, children, submit, redirectPath, fetching }) => {
     setInputs(() => ({ ...inputs, [name]: { ...inputs[name], value } }));
   };
 
-  const onFocus = e => {
+  const onFocus = (e) => {
     e.preventDefault();
     e.persist();
     e.stopPropagation();
@@ -68,28 +68,26 @@ const Form = ({ fields, children, submit, redirectPath, fetching }) => {
     <div className="flex justify-center w-full">
       <form className="w-full lg:w-2/3">
         <div className="flex flex-wrap -mx-3 mb-2">
-          {Object.entries(inputs).map(([name, input]) => {
-            return (
-              <div
-                key={name}
-                className={`px-2 ${input.depth > 1 ? `lg:w-1/${input.depth} w-full` : 'w-full'}`}
-              >
-                <Input
-                  id={`grid-${name}`}
-                  type={input.type}
-                  name={name}
-                  placeHolderName={input.name}
-                  validPlaceholder={input.placeholder}
-                  value={input.value}
-                  valid={input.valid}
-                  onChange={onChange}
-                  onFocus={onFocus}
-                />
-              </div>
-            );
-          })}
+          {Object.entries(inputs).map(([name, input]) => (
+            <div
+              key={name}
+              className={`px-2 ${input.depth > 1 ? `lg:w-1/${input.depth} w-full` : 'w-full'}`}
+            >
+              <Input
+                id={`grid-${name}`}
+                type={input.type}
+                name={name}
+                placeHolderName={input.name}
+                validPlaceholder={input.placeholder}
+                value={input.value}
+                valid={input.valid}
+                onChange={onChange}
+                onFocus={onFocus}
+              />
+            </div>
+          ))}
           {Array.isArray(children) ? (
-            children.map(child => <div className="w-full px-2">{child}</div>)
+            children.map((child) => <div className="w-full px-2">{child}</div>)
           ) : (
             <div className="w-full px-2">{children}</div>
           )}
@@ -123,14 +121,14 @@ Form.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   submit: PropTypes.func.isRequired,
   redirectPath: PropTypes.string,
-  fetching: PropTypes.bool
+  fetching: PropTypes.bool,
 };
 
 Form.defaultProps = {
   fields: [],
   children: undefined,
   redirectPath: undefined,
-  fetching: false
+  fetching: false,
 };
 
 export default Form;

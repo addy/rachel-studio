@@ -14,7 +14,7 @@ const Input = ({
   invalidPlaceholder,
   onChange,
   onFocus,
-  onBlur
+  onBlur,
 }) => {
   const [placeholder, setPlaceholder] = useState(undefined);
 
@@ -69,7 +69,7 @@ Input.propTypes = {
   invalidPlaceholder: PropTypes.string,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
-  onBlur: PropTypes.func
+  onBlur: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -80,7 +80,7 @@ Input.defaultProps = {
   invalidPlaceholder: undefined,
   onChange: undefined,
   onFocus: undefined,
-  onBlur: undefined
+  onBlur: undefined,
 };
 
 export default Input;

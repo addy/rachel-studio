@@ -6,7 +6,7 @@ const initialState = {
   alert: undefined,
   submitting: false,
   alertTitle: undefined,
-  alertMessage: undefined
+  alertMessage: undefined,
 };
 
 const reducer = (state, action) => {
@@ -17,28 +17,28 @@ const reducer = (state, action) => {
         alert: 'success',
         alertTitle: 'Payment Received!',
         alertMessage:
-          'Thank you for your purchase. You will receive a receipt in your email shortly.'
+          'Thank you for your purchase. You will receive a receipt in your email shortly.',
       };
     case 'paymentFailure':
       return {
         ...state,
         alert: 'failure',
         alertTitle: 'Uh oh!',
-        alertMessage: 'There was a problem with your order. Please try again later.'
+        alertMessage: 'There was a problem with your order. Please try again later.',
       };
     case 'contactSuccess':
       return {
         ...state,
         alert: 'success',
         alertTitle: 'Success!',
-        alertMessage: 'We have received your message and will reply to you shortly.'
+        alertMessage: 'We have received your message and will reply to you shortly.',
       };
     case 'contactFailure':
       return {
         ...state,
         alert: 'failure',
         alertTitle: 'Uh oh!',
-        alertMessage: 'There was a problem with sending your message. Please try again later.'
+        alertMessage: 'There was a problem with sending your message. Please try again later.',
       };
     case 'hideAlert': {
       return { ...state, alert: undefined, alertTitle: undefined, alertMessage: undefined };
@@ -62,11 +62,11 @@ const Store = ({ children }) => (
 );
 
 Store.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
 
 Store.defaultProps = {
-  children: undefined
+  children: undefined,
 };
 
 export default Store;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import ReactGA from 'react-ga';
 
-const sendPageView = location => {
+const sendPageView = (location) => {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);
 };
@@ -22,8 +22,8 @@ GAListener.propTypes = {
   children: PropTypes.node,
   trackingID: PropTypes.string,
   history: PropTypes.shape({
-    listen: PropTypes.func
-  })
+    listen: PropTypes.func,
+  }),
 };
 
 export default withRouter(GAListener);
