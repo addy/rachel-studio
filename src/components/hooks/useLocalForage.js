@@ -4,19 +4,19 @@ import localforage from 'localforage';
 export const actionTypes = {
   GET: 'get',
   SET: 'set',
-  DELETE: 'delete'
+  DELETE: 'delete',
 };
 
 export const statusTypes = {
   FETCHING: 'fetching',
   SUCCESS: 'success',
-  FAILURE: 'failure'
+  FAILURE: 'failure',
 };
 
 const actions = ({ key, value }) => ({
   get: async () => localforage.getItem(key),
   set: async () => localforage.setItem(key, value),
-  delete: async () => localforage.removeItem(key)
+  delete: async () => localforage.removeItem(key),
 });
 
 const initialState = { status: null, response: null };

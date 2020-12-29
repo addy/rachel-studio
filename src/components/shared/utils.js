@@ -1,11 +1,11 @@
-export const capitalize = str =>
+export const capitalize = (str) =>
   str
     .toLowerCase()
     .split(' ')
-    .map(s => `${s.charAt(0).toUpperCase()}${s.substring(1)}`)
+    .map((s) => `${s.charAt(0).toUpperCase()}${s.substring(1)}`)
     .join(' ');
 
-export const camelize = str =>
+export const camelize = (str) =>
   str
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
       index === 0 ? word.toLowerCase() : word.toUpperCase()
@@ -25,15 +25,16 @@ export const flatten = (arr, initialValue = {}, depth = 1) =>
         type: value.type,
         value: '',
         valid: true,
-        depth
-      }
+        depth,
+      },
     };
   }, initialValue);
 
-export const extract = values =>
-  Object.entries(values).reduce((current, [key, value]) => {
-    return {
+export const extract = (values) =>
+  Object.entries(values).reduce(
+    (current, [key, value]) => ({
       ...current,
-      [key]: value.value
-    };
-  }, {});
+      [key]: value.value,
+    }),
+    {}
+  );

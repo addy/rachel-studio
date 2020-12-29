@@ -14,9 +14,9 @@ export const useStore = () => useContext(StateContext);
 StateProvider.propTypes = {
   reducer: PropTypes.func.isRequired,
   initialState: PropTypes.object.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
 
 StateProvider.defaultProps = {
-  children: undefined
+  children: undefined,
 };

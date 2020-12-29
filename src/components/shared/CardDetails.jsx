@@ -33,8 +33,8 @@ CardDetails.propTypes = {
     size: PropTypes.string,
     price: PropTypes.number,
     sold: PropTypes.bool,
-    src: PropTypes.string
-  }).isRequired
+    src: PropTypes.string,
+  }).isRequired,
 };
 
 export default CardDetails;

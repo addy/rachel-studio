@@ -4,8 +4,8 @@ export default (easingType = 'linear', duration = 500, delay = 0, halt = false) 
   const [elapsed, setTime] = useState(0);
 
   const easing = {
-    linear: n => n,
-    elastic: n => n * (33 * n * n * n * n - 106 * n * n * n + 126 * n * n - 67 * n + 15)
+    linear: (n) => n,
+    elastic: (n) => n * (33 * n * n * n * n - 106 * n * n * n + 126 * n * n - 67 * n + 15),
   };
 
   useEffect(() => {

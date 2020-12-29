@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-underscore-dangle */
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Checkout from './Checkout';
 
@@ -8,7 +8,7 @@ const Details = ({ match }) => {
   const [details, setDetails] = useState();
   const [price, setPrice] = useState();
   const {
-    params: { id }
+    params: { id },
   } = match;
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Details = ({ match }) => {
           method: 'GET',
           mode: 'same-origin',
           credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         });
 
         art = await art.json();
@@ -33,7 +33,7 @@ const Details = ({ match }) => {
   }, [id]);
 
   return details ? (
-    <Fragment>
+    <>
       <div className="flex items-center justify-center mt-12 p-6">
         <div className="flex flex-col lg:flex-row items-center justify-center container">
           <div className="bg-white p-6 shadow-xl w-full h-full lg:w-3/4 lg:h-3/4 xl:w-1/2 xl:h-1/2">
@@ -50,7 +50,7 @@ const Details = ({ match }) => {
                 {`${details.size ? `${details.size} / ` : ''}${details.medium} / ${details.year}`}
               </p>
               {details.price && (
-                <Fragment>
+                <>
                   {details.sold ? (
                     <div className="flex flex-row">
                       <div className="italic text-lg text-gray-500 text-base mr-2">SOLD</div>
@@ -60,7 +60,7 @@ const Details = ({ match }) => {
                     <p className="italic text-lg text-gray-500 text-base">{`$${details.price}`}</p>
                   )}
                   {details.print && (
-                    <p className="italic text-lg text-gray-500 text-base">{`Print price -  $${details.printPrice}`}</p>
+                    <p className="italic text-lg text-gray-500 text-base">{`Print price - $${details.printPrice}`}</p>
                   )}
                   <div className="flex flex-row">
                     {details.print && (
@@ -82,13 +82,13 @@ const Details = ({ match }) => {
                       </button>
                     )}
                   </div>
-                </Fragment>
+                </>
               )}
             </div>
           )}
         </div>
       </div>
-    </Fragment>
+    </>
   ) : (
     <span className="loading">
       {details === undefined ? 'Loading...' : 'Could not find artwork'}
@@ -97,7 +97,7 @@ const Details = ({ match }) => {
 };
 
 Details.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
 };
 
 export default Details;

@@ -1,22 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const CompressionPlugin = require('compression-webpack-plugin');
-const MinifyPlugin = require('babel-minify-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'production',
-  stats: 'normal',
+  stats: 'errors-only',
   plugins: [
     new CompressionPlugin({
-      filename: '[path].br[query]',
+      filename: '[path][base].br[query]',
       algorithm: 'brotliCompress',
       test: /\.(js|jsx|css|html|svg|jpg)$/,
       compressionOptions: { level: 11 },
       threshold: 10240,
-      minRatio: 1,
-      deleteOriginalAssets: false
+      minRatio: 0.8,
+      deleteOriginalAssets: false,
     }),
-    new MinifyPlugin()
-  ]
+  ],
+  devtool: 'source-map',
 });
