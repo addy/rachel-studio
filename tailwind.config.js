@@ -1,5 +1,8 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx}', './public/index.html'],
+  purge: {
+    content: ['./src/**/*.{js,jsx}', './public/index.html'],
+    options: { safelist: ['h-screen'] },
+  },
   theme: {
     extend: {
       colors: {
