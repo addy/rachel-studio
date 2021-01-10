@@ -1,0 +1,4 @@
+extraction:
+  javascript:
+    exclude:
+      - .pnp.js
