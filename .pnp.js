@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.12.5"],
             ["@stripe/react-stripe-js", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:1.1.2"],
             ["@stripe/stripe-js", "npm:1.11.0"],
-            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
+            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.2.1"],
             ["babel-eslint", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
             ["babel-loader", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:8.2.2"],
             ["compression-webpack-plugin", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:7.1.1"],
@@ -3113,20 +3113,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["autoprefixer", [
-        ["npm:10.1.0", {
-          "packageLocation": "./.yarn/cache/autoprefixer-npm-10.1.0-21e04ba7c9-a0d9ccd605.zip/node_modules/autoprefixer/",
+        ["npm:10.2.1", {
+          "packageLocation": "./.yarn/cache/autoprefixer-npm-10.2.1-c1ecef6619-ede6dec5a5.zip/node_modules/autoprefixer/",
           "packageDependencies": [
-            ["autoprefixer", "npm:10.1.0"]
+            ["autoprefixer", "npm:10.2.1"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0", {
-          "packageLocation": "./.yarn/$$virtual/autoprefixer-virtual-11b115c9c2/0/cache/autoprefixer-npm-10.1.0-21e04ba7c9-a0d9ccd605.zip/node_modules/autoprefixer/",
+        ["virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.2.1", {
+          "packageLocation": "./.yarn/$$virtual/autoprefixer-virtual-0742cc879d/0/cache/autoprefixer-npm-10.2.1-c1ecef6619-ede6dec5a5.zip/node_modules/autoprefixer/",
           "packageDependencies": [
-            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
+            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.2.1"],
             ["@types/postcss", null],
-            ["browserslist", "npm:4.16.0"],
-            ["caniuse-lite", "npm:1.0.30001171"],
+            ["browserslist", "npm:4.16.1"],
+            ["caniuse-lite", "npm:1.0.30001173"],
             ["colorette", "npm:1.2.1"],
             ["fraction.js", "npm:4.0.13"],
             ["normalize-range", "npm:0.1.2"],
@@ -3376,6 +3376,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-releases", "npm:1.1.67"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.16.1", {
+          "packageLocation": "./.yarn/cache/browserslist-npm-4.16.1-37866cfd90-56f51464c3.zip/node_modules/browserslist/",
+          "packageDependencies": [
+            ["browserslist", "npm:4.16.1"],
+            ["caniuse-lite", "npm:1.0.30001173"],
+            ["colorette", "npm:1.2.1"],
+            ["electron-to-chromium", "npm:1.3.635"],
+            ["escalade", "npm:3.1.1"],
+            ["node-releases", "npm:1.1.69"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["buffer-from", [
@@ -3532,6 +3544,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001171-39b12b1e53-6c6a0cdf48.zip/node_modules/caniuse-lite/",
           "packageDependencies": [
             ["caniuse-lite", "npm:1.0.30001171"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.0.30001173", {
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001173-735eed7b8e-e90b1f29f4.zip/node_modules/caniuse-lite/",
+          "packageDependencies": [
+            ["caniuse-lite", "npm:1.0.30001173"]
           ],
           "linkType": "HARD",
         }]
@@ -4634,6 +4653,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.3.633-7d9467177b-986784f90d.zip/node_modules/electron-to-chromium/",
           "packageDependencies": [
             ["electron-to-chromium", "npm:1.3.633"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.3.635", {
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.3.635-511cd6bb2f-fef87f840d.zip/node_modules/electron-to-chromium/",
+          "packageDependencies": [
+            ["electron-to-chromium", "npm:1.3.635"]
           ],
           "linkType": "HARD",
         }]
@@ -7625,6 +7651,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-releases", "npm:1.1.67"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.1.69", {
+          "packageLocation": "./.yarn/cache/node-releases-npm-1.1.69-d492f441d9-240b2534f3.zip/node_modules/node-releases/",
+          "packageDependencies": [
+            ["node-releases", "npm:1.1.69"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["nopt", [
@@ -9083,7 +9116,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.12.5"],
             ["@stripe/react-stripe-js", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:1.1.2"],
             ["@stripe/stripe-js", "npm:1.11.0"],
-            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
+            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.2.1"],
             ["babel-eslint", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
             ["babel-loader", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:8.2.2"],
             ["compression-webpack-plugin", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:7.1.1"],
@@ -10357,7 +10390,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fullhuman/postcss-purgecss", "npm:3.1.3"],
             ["@types/autoprefixer", null],
             ["@types/postcss", null],
-            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.1.0"],
+            ["autoprefixer", "virtual:113019c751420b0f83b6e9ae7fef9953ee25fa044aaf0622e865590ddbb9844bdab6fc2f7a45f0374956d5a764bf837ae3c1ae577054fa524ba4ce31fa73ce12#npm:10.2.1"],
             ["bytes", "npm:3.1.0"],
             ["chalk", "npm:4.1.0"],
             ["color", "npm:3.1.3"],
