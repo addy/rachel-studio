@@ -5,7 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  stats: 'errors-only',
+  stats: 'normal',
   plugins: [
     new CompressionPlugin({
       filename: '[path][base].br[query]',
