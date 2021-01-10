@@ -9,4 +9,5 @@ localforage.config({
   name: 'Rachel Shaw Studio',
 });
 
+// eslint-disable-next-line react/jsx-filename-extension
 ReactDOM.render(<Router />, document.getElementById('app'));

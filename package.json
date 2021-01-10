@@ -2,7 +2,7 @@
   "name": "rachel-studio",
   "version": "1.0.0",
   "description": "Rachel's Studio",
-  "main": "index.jsx",
+  "main": "index.js",
   "license": "MIT",
   "private": true,
   "dependencies": {
