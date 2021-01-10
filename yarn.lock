@@ -1179,7 +1179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.8.4":
   version: 7.12.5
   resolution: "@babel/runtime@npm:7.12.5"
   dependencies:
@@ -7021,6 +7021,7 @@ fsevents@~2.1.2:
     "@babel/plugin-transform-runtime": ^7.12.10
     "@babel/preset-env": ^7.12.11
     "@babel/preset-react": ^7.12.10
+    "@babel/runtime": ^7.12.5
     "@stripe/react-stripe-js": ^1.1.2
     "@stripe/stripe-js": ^1.11.0
     autoprefixer: ^10.1.0
