@@ -11,7 +11,7 @@
 Rachel's Portfolio Site
 
 ### Prerequisites
-1. [Node v14.15.4](https://nodejs.org/dist/v14.15.4/)
+1. [Node - v14.15.4](https://nodejs.org/dist/v14.15.4/)
 2. [Yarn - latest](https://github.com/yarnpkg/yarn/releases/latest)
 
 ### Installing Dependencies
