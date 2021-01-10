@@ -18,7 +18,7 @@ const Form = ({ fields, children, submit, redirectPath, fetching }) => {
     switch (input.type) {
       case 'email':
         return (
-          Boolean(input.value) && /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(input.value)
+          Boolean(input.value) && /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(input.value)
         );
       default:
         return Boolean(input.value);
