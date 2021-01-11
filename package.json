@@ -32,7 +32,7 @@
     "babel-loader": "^8.2.2",
     "compression-webpack-plugin": "^7.1.1",
     "css-loader": "^5.0.1",
-    "css-minimizer-webpack-plugin": "^1.1.5",
+    "css-minimizer-webpack-plugin": "^1.2.0",
     "eslint": "7.17.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "^7.1.0",
