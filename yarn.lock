@@ -2672,9 +2672,9 @@ html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
 
-html-webpack-plugin@5.0.0-beta.4:
-  version "5.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.0.0-beta.4.tgz#b07f76a546f7423fe057af7dce3fa983f774f581"
+html-webpack-plugin@5.0.0-beta.6:
+  version "5.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.0.0-beta.6.tgz#aab868a3c1607828699ebbbb44cde9d6f3615cb3"
   dependencies:
     "@types/html-minifier-terser" "^5.0.0"
     html-minifier-terser "^5.0.1"
