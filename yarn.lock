@@ -830,9 +830,9 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@stripe/react-stripe-js@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-1.1.2.tgz#a7f5ef5b4d7dc7fa723501b706644414cfe6dcba"
+"@stripe/react-stripe-js@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-1.2.1.tgz#5692ae7bc306d06aef5828f3f50cb9fd01f6cb84"
   dependencies:
     prop-types "^15.7.2"
 
